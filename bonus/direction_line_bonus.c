@@ -6,15 +6,15 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:54:47 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/09 15:06:51 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:29:49 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "./cub3d_bonus.h"
 
 
 //     --------------------- Function of drawing line --------------------------- //
-void	drawLine(t_var *var)
+void	drawLineBonus(t_varb *var)
 {
 	
 	double  deltaX;
@@ -49,7 +49,7 @@ void	drawLine(t_var *var)
   	i = 1;
 	while (i <= step)
 	{
-		 my_img_pix_put2(var, newX * SCALE_MINI_MAP, newY * SCALE_MINI_MAP, 0xe56025);
+		 my_img_pix_put_bonus(var, newX * SCALE_MINI_MAP, newY * SCALE_MINI_MAP, 0xe56025);
 		newX = newX + deltaX;
 		newY = newY + deltaY;
     	i++;

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   playerHookCheck.c                                  :+:      :+:    :+:   */
+/*   playerHookBonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 14:37:41 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 07:51:45 by bben-aou         ###   ########.fr       */
+/*   Created: 2022/11/10 07:50:22 by bben-aou          #+#    #+#             */
+/*   Updated: 2022/11/10 10:57:58 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "./cub3d_bonus.h"
 
 
 //     ----------------------- Function of hooking on the key pressed ---------------------------- //
 
-int	key_hook(int key,t_var *var)
+int	key_hook_bonus(int key,t_varb *var)
 {
 	
 	if (key == 123)
@@ -33,8 +33,10 @@ int	key_hook(int key,t_var *var)
     if (key == 2)
         // move right
         var->keyPerssed->keyD = 1;
+    if (key == 46)
+        var->miniMapHook = 1;  
     if (key == 53)
-		cross(var);
+		cross_bonus(var);
 	return (0);
 }
 
@@ -43,7 +45,7 @@ int	key_hook(int key,t_var *var)
 
 //     ----------------------- Function of hooking on the key releasted ---------------------------- //
 
-int    key_release(int key, t_var *var)
+int    key_release_bonus(int key, t_varb *var)
 {
 
 	if (key == 123)
@@ -84,14 +86,15 @@ int    key_release(int key, t_var *var)
         var->player->walkBackForward = 0;
         var->keyPerssed->keyD = 0;
     }
+    
     if (key == 53)
-		cross(var);
+		cross_bonus(var);
 	return (0);
 }
 
 
 
-void    normilizeAngle(t_var *var)
+void    normilizeAngleB(t_varb *var)
 {
 
     var->player->rotationAngle = fmod(var->player->rotationAngle, 2 * M_PI);
@@ -100,7 +103,7 @@ void    normilizeAngle(t_var *var)
     
 }
 
-void    normalizingRayAngle(t_var *var)
+void    normalizingRayAngleB(t_varb *var)
 {
     var->ray->rayAngle = fmod(var->ray->rayAngle, 2 * M_PI);
     if (var->ray->rayAngle < 0)
@@ -108,7 +111,7 @@ void    normalizingRayAngle(t_var *var)
 }
 
 
-int checkIfWall(t_var *var, int status)
+int checkIfWallB(t_varb *var, int status)
 {
     int posX = 0;
     int posY = 0;
@@ -155,14 +158,14 @@ int checkIfWall(t_var *var, int status)
 }
 
 
-void    keyPressedAction(t_var *var)
+void    keyPressedAction_bonus(t_varb *var)
 {
     
-    normilizeAngle(var);
+    normilizeAngleB(var);
     
     if (var->keyPerssed->keyW == 1)
     {
-        if (checkIfWall(var,1) == 0)
+        if (checkIfWallB(var,1) == 0)
         {
             var->player->walkBackForward = 1;
             var->player->moveStep =  var->player->walkBackForward * var->player->moveSpeed;
@@ -172,7 +175,7 @@ void    keyPressedAction(t_var *var)
     }
     if (var->keyPerssed->keyS == 1)
     {
-        if (checkIfWall(var,2) == 0)
+        if (checkIfWallB(var,2) == 0)
         {
             var->player->walkBackForward = -1;
             var->player->moveStep =  var->player->walkBackForward * var->player->moveSpeed;
@@ -182,7 +185,7 @@ void    keyPressedAction(t_var *var)
     }
     if ( var->keyPerssed->keyD == 1)
     {
-        if (checkIfWall(var,3) == 0)
+        if (checkIfWallB(var,3) == 0)
         {
             var->player->walkBackForward = 1;
             var->player->moveStep =  var->player->walkBackForward * var->player->moveSpeed;
@@ -192,7 +195,7 @@ void    keyPressedAction(t_var *var)
     }
     if (var->keyPerssed->keyA == 1)
     {
-        if (checkIfWall(var,4) == 0)
+        if (checkIfWallB(var,4) == 0)
         {
             var->player->walkBackForward = -1;
             var->player->moveStep =  var->player->walkBackForward * var->player->moveSpeed;

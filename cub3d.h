@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
+/*   Updated: 2022/11/10 08:57:23 by bben-aou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef H_CUB3D
 #define H_CUB3D
 
@@ -12,10 +24,10 @@
 # include <limits.h>
 
 # include "./get_next_line/get_next_line.h"
+# include "./bonus/cub3d_bonus.h"
 
 #define TILE_SIZE 36 
 #define SCALE_MINI_MAP 0.2
-#define l 30
 
 typedef struct s_img
 {
