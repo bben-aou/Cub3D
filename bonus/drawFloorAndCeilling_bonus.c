@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawFloorAndCeilling.c                             :+:      :+:    :+:   */
+/*   drawFloorAndCeilling_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 07:57:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 10:34:05 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:14:39 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "./cub3d_bonus.h"
 
 void    drawCeillingFloorB(t_varb *var)
 {
@@ -21,9 +21,9 @@ void    drawCeillingFloorB(t_varb *var)
         while (v < var->mlx->width)
         {
             if (t <= var->mlx->height/2 )
-		        my_img_pix_put2(var, v, t, 0x509ee5);
+		        my_img_pix_put_bonus(var, v, t, 0x509ee5);
             else
-		        my_img_pix_put2(var, v, t, 0xEEEEEE);
+		        my_img_pix_put_bonus(var, v, t, 0xEEEEEE);
             v++;
         }
         t++;

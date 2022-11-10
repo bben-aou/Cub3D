@@ -6,7 +6,7 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:37 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 11:09:56 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:11:44 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,168 @@
 # include <limits.h>
 
 # include "../get_next_line/get_next_line.h"
-# include "../cub3d.h"
-
 
 #define TILE_SIZE 36 
 #define SCALE_MINI_MAP 0.2
+
+typedef struct s_imgb
+{
+	void	*img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_imgb;
+
+typedef struct s_mlxb
+{
+    void    *init;
+    void    *win;
+    t_imgb   img;
+    t_imgb   *imgWall;
+    t_imgb   *miniMap;
+    int     max_len;
+    int     width;
+    int     height;
+} t_mlxb;
+
+typedef struct s_playerb
+{
+    
+    double  x;
+    double  y;
+    double  sizePlayer;
+    int     turnLeftRight;
+    int     walkBackForward; 
+    double  rotationAngle;// depends on The symbole of player on the map 
+    double  moveSpeed;
+    double  moveStep;
+    double  rotationSpeed; // means 3deg of retation per each click 
+    double  tempX;
+    double  tempY;
+} t_playerb;
+
+
+typedef struct s_keyPressedb
+{
+    int keyW;
+    int keyS;
+    int keyD;
+    int keyA;
+    int keyTurnLeft;
+    int keyTurnRight;
+
+} t_keyPressedb;
+
+typedef struct s_raycastingb
+{
+    //  ------------- horizontal variables -------------- //
+    double  fov;
+    double  rayAngle;
+    double  yWallHit;
+    double  xWallHit;
+    double  xintercept;
+    double  yintercept;
+    double  xstep;
+    double  ystep;
+    double  horizDistance;
+    int     horizontalWallFound;
+    double  horizontalWallHitX;
+    double  horizontalWallHitY;
+
+    //  ------------- vertical variables -------------- //
+    double  verticalWallHitX;
+    double  verticalWallHitY;
+    double  xVerticalIntercept;
+    double  yVerticalIntercept;
+    double  xVerticalStep;
+    double  yVerticalStep;
+    double  verticDistance;
+    int     verticalWallFound;
+
+
+
+    int  wasHitVertical;
+
+    double  distance;
+
+} t_raycastingb;
+
+typedef struct s_viewb
+{
+    int facingUp;
+    int facingDown;
+    int facingRight;
+    int facingLeft;
+
+} t_viewb;
+
+typedef struct s_textureDatab
+{
+    char    *id;
+    char    *path;
+    int     onlyOne;
+} t_textureDatab;
+
+typedef struct s_textureb
+{
+    t_textureDatab   *north_texture;
+    t_textureDatab   *west_texture;
+    t_textureDatab   *south_texture;
+    t_textureDatab   *east_texture;
+
+} t_textureb;
+
+typedef struct s_floorDatab
+{
+    char    id;
+    int     *color;
+    int     onlyF;
+}  t_floorDatab;
+
+typedef struct s_ceillibDatab
+{
+    char    id;
+    int     *color;
+    int     onlyC;
+}  t_ceillibDatab;    
+
+typedef struct s_varb
+{
+    int              fd;
+    char            *tmp;
+    char            **tmpMap;
+    char            **tmpRgb;
+    char            **map;
+    int             components;
+    int             status;
+    t_mlxb           * mlx;
+    t_playerb        *player;
+    t_textureb       *texture;
+    t_floorDatab     *floor;
+    t_ceillibDatab   *ceilling;
+    t_keyPressedb    *keyPerssed;
+    t_raycastingb    *ray;
+    t_viewb          *view;
+
+    char            **idTextures;
+
+    int             unsedAvoid;
+    int             firstDraw;
+    int             spaceCase;
+
+    int             miniMapHook;
+    //  -----------    Brahim Part    -----------  //
+    int     count_line;
+    char    *buff;
+    char    *save;
+    char    *mapInLine; 
+    int     count_player;
+    int     nothing;
+
+} t_varb;
+
+
 
 int     reprint_map_bonus(void *var);
 void    draw_all_bonus(t_varb *var);
@@ -81,175 +238,25 @@ void	initialize_dataB(t_varb *var);
 int     checkMapSratB(char *str);
 void	read_map_bonus(t_varb *var);
 void    rendering3D_bonus(t_varb *var);
-void    facingUpDownB(t_var *var);
-void    whereFacingB(t_var *var);
-void    getIntersectionHorizontalB(t_var *var);
-double  getHorizDistanceB(t_var *var);
-double  getVerticDistanceB(t_var *var);
-void    getIntersectionVerticalB(t_var *var);
-
-
-
-
-
-
-
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bpp; /* bits per pixel */
-	int		line_len;
-	int		endian;
-}	t_imgb;
-
-typedef struct s_mlx
-{
-    void    *init;
-    void    *win;
-    t_img   img;
-    t_img   *imgWall;
-    t_img   *miniMap;
-    int     max_len;
-    int     width;
-    int     height;
-} t_mlxb;
-
-typedef struct s_player{
-    
-    double  x;
-    double  y;
-    double  sizePlayer;
-    int     turnLeftRight;
-    int     walkBackForward; 
-    double  rotationAngle;// depends on The symbole of player on the map 
-    double  moveSpeed;
-    double  moveStep;
-    double  rotationSpeed; // means 3deg of retation per each click 
-    double  tempX;
-    double  tempY;
-} t_playerb;
-
-
-typedef struct s_keyPressed
-{
-    int keyW;
-    int keyS;
-    int keyD;
-    int keyA;
-    int keyTurnLeft;
-    int keyTurnRight;
-
-} t_keyPressedb;
-
-typedef struct s_raycasting
-{
-    //  ------------- horizontal variables -------------- //
-    double  fov;
-    double  rayAngle;
-    double  yWallHit;
-    double  xWallHit;
-    double  xintercept;
-    double  yintercept;
-    double  xstep;
-    double  ystep;
-    double  horizDistance;
-    int     horizontalWallFound;
-    double  horizontalWallHitX;
-    double  horizontalWallHitY;
-
-    //  ------------- vertical variables -------------- //
-    double  verticalWallHitX;
-    double  verticalWallHitY;
-    double  xVerticalIntercept;
-    double  yVerticalIntercept;
-    double  xVerticalStep;
-    double  yVerticalStep;
-    double  verticDistance;
-    int     verticalWallFound;
-
-
-
-    int  wasHitVertical;
-
-    double  distance;
-
-} t_raycastingb;
-
-typedef struct s_view
-{
-    int facingUp;
-    int facingDown;
-    int facingRight;
-    int facingLeft;
-
-} t_viewb;
-
-typedef struct s_textureData
-{
-    char    *id;
-    char    *path;
-    int     onlyOne;
-} t_textureDatab;
-
-typedef struct s_texture
-{
-    t_textureData   *north_texture;
-    t_textureData   *west_texture;
-    t_textureData   *south_texture;
-    t_textureData   *east_texture;
-
-} t_textureb;
-
-typedef struct s_floorData
-{
-    char    id;
-    int     *color;
-    int     onlyF;
-}  t_floorDatab;
-
-typedef struct s_ceillibData
-{
-    char    id;
-    int     *color;
-    int     onlyC;
-}  t_ceillibDatab;    
-
-typedef struct s_var
-{
-    int              fd;
-    char            *tmp;
-    char            **tmpMap;
-    char            **tmpRgb;
-    char            **map;
-    int             components;
-    int             status;
-    t_mlxb           * mlx;
-    t_playerb        *player;
-    t_textureb       *texture;
-    t_floorDatab     *floor;
-    t_ceillibDatab   *ceilling;
-    t_keyPressedb    *keyPerssed;
-    t_raycastingb    *ray;
-    t_viewb          *view;
-
-    char            **idTextures;
-
-    int             unsedAvoid;
-    int             firstDraw;
-    int             spaceCase;
-
-    int             miniMapHook;
-    //  -----------    Brahim Part    -----------  //
-    int     count_line;
-    char    *buff;
-    char    *save;
-    char    *mapInLine; 
-    int     count_player;
-    int     nothing;
-
-} t_varb;
-
+void    facingUpDownB(t_varb *var);
+void    whereFacingB(t_varb *var);
+void    getIntersectionHorizontalB(t_varb *var);
+double  getHorizDistanceB(t_varb *var);
+double  getVerticDistanceB(t_varb *var);
+void    getIntersectionVerticalB(t_varb *var);
+char	**ft_splitB1(char *s, char c);
+char	*ft_strdupB1(char *str);
+int     ft_strcmpB1(char *str, char *ptr);
+char	*mystrdupB(char *src);
+int     ft_atoiB(const char *str);
+int     ft_check_extension(char *str);
+char	**ft_multisplit(char *str, char *charset);
+char	**ft_split(char const *s, char c);
+int     ft_strcmp(char *s1, char *s2);
+char	*ft_strdup(char *src, int j);
+char	*mystrdupB(char *src);
+int     ft_strlen1(const char *str);
+void	error_mapB1(char *msg, t_varb *var);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 07:48:35 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 10:35:41 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:59:29 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,10 @@ int main(int argc, char **argv)
     var.mlx->imgWall->addr = mlx_get_data_addr(var.mlx->imgWall->img, &var.mlx->imgWall->bpp, &var.mlx->imgWall->line_len,
     							&var.mlx->imgWall->endian);
 
-    var.mlx->miniMap->img = mlx_new_image(var.mlx->init, var.mlx->width * 4, var.mlx->height * 4 );
-    var.mlx->miniMap->addr = mlx_get_data_addr(var.mlx->miniMap->img, &var.mlx->miniMap->bpp, &var.mlx->miniMap->line_len,
-    							&var.mlx->miniMap->endian);
+
     set_up_all_bonus(&var);
-    mlx_hook(var.mlx->win, 2,1L<<2, key_hook, &var);
-    mlx_hook(var.mlx->win, 3, 1L<<0, key_release, &var);
+    mlx_hook(var.mlx->win, 2,1L<<2, key_hook_bonus, &var);
+    mlx_hook(var.mlx->win, 3, 1L<<0, key_release_bonus, &var);
 	mlx_hook(var.mlx->win, 17, 1L << 17, cross_bonus, &var);
     mlx_loop_hook(var.mlx->init, reprint_map_bonus, &var);
     mlx_loop(var.mlx->init);

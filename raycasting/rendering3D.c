@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   renderingWalls.c                                   :+:      :+:    :+:   */
+/*   rendering3D.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:28:45 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/09 18:29:24 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:01:11 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,9 @@ void    rendering3D(t_var *var)
 
             //  ----------- draw Walls ------------- //    
             drawWall(i ,y1, y2,i,var); 
-        // launchRays(var);
         var->ray->rayAngle += var->ray->fov / var->mlx->width;  
         i++;
     }
-    // if (var->miniMapHook == 1)
-    // {
-    //     draw_player(var);
-    //     draw_map(var);
-    // }
     mlx_put_image_to_window(var->mlx->init, var->mlx->win, var->mlx->imgWall->img, 0, 0);
     mlx_destroy_image(var->mlx->init, var->mlx->imgWall->img);
 }

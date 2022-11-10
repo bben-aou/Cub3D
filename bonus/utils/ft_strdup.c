@@ -6,11 +6,11 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 08:30:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/10/28 09:52:18 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:08:20 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 char	*ft_strdup(char *src, int j)
 {
@@ -31,7 +31,7 @@ char	*ft_strdup(char *src, int j)
 }
 
 
-char	*mystrdup(char *src)
+char	*mystrdupB(char *src)
 {
 	char	*new;
 	int		i;

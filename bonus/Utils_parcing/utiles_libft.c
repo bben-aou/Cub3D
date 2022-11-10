@@ -6,14 +6,14 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:52:24 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/09 17:10:43 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:09:02 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 
-char	*ft_strdupB(char *str)
+char	*ft_strdupB1(char *str)
 {
 	int		i;
 	char	*ptr;
@@ -31,7 +31,7 @@ char	*ft_strdupB(char *str)
 	return (ptr);
 }
 
-int	ft_strcmpB(char *str, char *ptr)
+int	ft_strcmpB1(char *str, char *ptr)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ int	ft_strcmpB(char *str, char *ptr)
 	return (str[i] - ptr[i]);
 }
 
-void	error_mapB(char *msg, t_var *var)
+void	error_mapB1(char *msg, t_varb *var)
 {
 	var->nothing = 0;
     printf("Oups Error : %s\n", msg);

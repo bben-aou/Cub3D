@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cast_rays.c                                        :+:      :+:    :+:   */
+/*   cast_rays_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:00:31 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 11:10:10 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:03:59 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "./cub3d_bonus.h"
 
-void    facingUpDownB(t_var *var)
+void    facingUpDownB(t_varb *var)
 {
         if (var->ray->rayAngle > 0 && var->ray->rayAngle < M_PI)
     {
@@ -26,7 +26,7 @@ void    facingUpDownB(t_var *var)
     }
 }
 
-void    whereFacingB(t_var *var)
+void    whereFacingB(t_varb *var)
 {
 
     if (var->ray->rayAngle < (0.5 * M_PI) || var->ray->rayAngle > (1.5 * M_PI))
@@ -43,7 +43,7 @@ void    whereFacingB(t_var *var)
 }
 
 
-void    getIntersectionHorizontalB(t_var *var)
+void    getIntersectionHorizontalB(t_varb *var)
 {
     double  nextHorizontalX;
     double  nextHorizontalY;
@@ -85,7 +85,7 @@ void    getIntersectionHorizontalB(t_var *var)
     }
 }
 
-double  getHorizDistanceB(t_var *var)
+double  getHorizDistanceB(t_varb *var)
 {
     double  value;
     double  deltaX;
@@ -97,7 +97,7 @@ double  getHorizDistanceB(t_var *var)
     return (value);
 }
 
-double  getVerticDistanceB(t_var *var)
+double  getVerticDistanceB(t_varb *var)
 {
     double  value;
     double  deltaX;
@@ -110,7 +110,7 @@ double  getVerticDistanceB(t_var *var)
 }
 
 
-void    getIntersectionVerticalB(t_var *var)
+void    getIntersectionVerticalB(t_varb *var)
 {
     double  nextVerticalX;
     double  nextVerticalY;

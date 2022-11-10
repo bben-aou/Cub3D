@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_mini_map.c                                    :+:      :+:    :+:   */
+/*   draw_mini_map_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:33:03 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/10 10:33:20 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:15:46 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,22 @@ void draw_mini_mapB(t_varb *var)
     drawLineBonus(var);
 }
 
-void set_map_size_bonus(t_var *var)
-{
-    int next;
-    int y;
+// void set_map_size_bonus(t_varb *var)
+// {
+//     int next;
+//     int y;
 
-    y = 0;
-    var->mlx->max_len = ft_strlen1(var->map[0]);
-    while (++y < var->count_line)
-    {
-        next = ft_strlen1(var->map[y]);
-        if (var->mlx->max_len < next)
-            var->mlx->max_len = next;
-    }
-    var->mlx->width = var->mlx->max_len * TILE_SIZE;
-    var->mlx->height = var->count_line * TILE_SIZE;
-}
+//     y = 0;
+//     var->mlx->max_len = ft_strlen1(var->map[0]);
+//     while (++y < var->count_line)
+//     {
+//         next = ft_strlen1(var->map[y]);
+//         if (var->mlx->max_len < next)
+//             var->mlx->max_len = next;
+//     }
+//     var->mlx->width = var->mlx->max_len * TILE_SIZE;
+//     var->mlx->height = var->count_line * TILE_SIZE;
+// }
 
 
 // int    reprint_map_(void *var)

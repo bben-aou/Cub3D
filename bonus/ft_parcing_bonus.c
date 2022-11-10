@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parcing.c                                       :+:      :+:    :+:   */
+/*   ft_parcing_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:38:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 11:02:07 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:50:49 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "./cub3d_bonus.h"
 
     //   ------   The function of creating and checking the file descriptor   ------   //
 
@@ -114,26 +114,26 @@ void    storeDataTextureB(t_varb *var)
 {
     if (var->status == 1)
     {
-        var->texture->north_texture->id = mystrdup("NO");
-        var->texture->north_texture->path = mystrdup(var->tmpMap[1]);
+        var->texture->north_texture->id = mystrdupB("NO");
+        var->texture->north_texture->path = mystrdupB(var->tmpMap[1]);
         var->texture->north_texture->onlyOne += 1;
     }
     if (var->status == 2)
     {
-        var->texture->south_texture->id = mystrdup("SO");
-        var->texture->south_texture->path = mystrdup(var->tmpMap[1]);
+        var->texture->south_texture->id = mystrdupB("SO");
+        var->texture->south_texture->path = mystrdupB(var->tmpMap[1]);
         var->texture->south_texture->onlyOne += 1;
     }
     if (var->status == 3)
     {
-        var->texture->west_texture->id = mystrdup("WE");
-        var->texture->west_texture->path = mystrdup(var->tmpMap[1]);
+        var->texture->west_texture->id = mystrdupB("WE");
+        var->texture->west_texture->path = mystrdupB(var->tmpMap[1]);
         var->texture->west_texture->onlyOne += 1;
     }
     if (var->status == 4)
     {
-        var->texture->east_texture->id = mystrdup("EA");
-        var->texture->east_texture->path = mystrdup(var->tmpMap[1]);
+        var->texture->east_texture->id = mystrdupB("EA");
+        var->texture->east_texture->path = mystrdupB(var->tmpMap[1]);
         var->texture->east_texture->onlyOne += 1;
     }
 }
@@ -176,7 +176,7 @@ void    ft_splitConvertRgbB(t_varb *var)
     {
         while (i < 3)
         {
-            var->floor->color[i] = ft_atoi(var->tmpRgb[i]);
+            var->floor->color[i] = ft_atoiB(var->tmpRgb[i]);
             ft_validValueB(var->floor->color[i]);
             i++;
         }
@@ -187,7 +187,7 @@ void    ft_splitConvertRgbB(t_varb *var)
     {
         while (i < 3)
         {
-            var->ceilling->color[i] = ft_atoi(var->tmpRgb[i]);
+            var->ceilling->color[i] = ft_atoiB(var->tmpRgb[i]);
             ft_validValueB(var->ceilling->color[i]);
             i++;
         }

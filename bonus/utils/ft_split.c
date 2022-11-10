@@ -6,11 +6,11 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:30:27 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/10/28 15:39:35 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:08:11 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 static size_t	ft_cw(char const *s, char c)
 {

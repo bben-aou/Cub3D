@@ -6,11 +6,11 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:10:59 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/09 17:18:14 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:08:45 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 static int	find(char *s, char c)
 {
@@ -52,7 +52,7 @@ static char	*ft_print(char *s, size_t start, size_t end)
 	return (ptr);
 }
 
-char	**ft_splitB(char *s, char c)
+char	**ft_splitB1(char *s, char c)
 {
 	char	**ptr;
 	int		p;

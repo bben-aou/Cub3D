@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:20:49 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/10 10:28:32 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:59:35 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "./cub3d_bonus.h"
 
 void    check_walls_bonus(t_varb *var)
 {
@@ -22,9 +22,9 @@ void    check_walls_bonus(t_varb *var)
     {
         x = ft_strlen1(var->map[y]) - 1;
         if (var->map[y][0] != ' ' && var->map[y][0] != '1')
-            error_mapB("Left Side of Wall", var);
+            error_mapB1("Left Side of Wall", var);
         else if (var->map[y][x] != ' ' && var->map[y][x] != '1')
-            error_mapB("Right Side of Wall", var); 
+            error_mapB1("Right Side of Wall", var); 
     }
 }
 
@@ -33,27 +33,27 @@ void    handle_space_in_linesB(t_varb *var, int x, char *str)
     int y;
 
     y = var->count_line - 1;
-    if (ft_strcmpB(str, "first") == 0)
+    if (ft_strcmpB1(str, "first") == 0)
     {
         if (var->map[1][x] != ' ' && var->map[1][x] != '1' && var->map[1][x] != '\0')
-                error_mapB("Around space In first Line", var);
+                error_mapB1("Around space In first Line", var);
         if (x > 0)
             if ((var->map[0][x - 1] != ' ' && var->map[0][x - 1] != '1'))
-                error_mapB("Around space in First Line", var);
+                error_mapB1("Around space in First Line", var);
         if (x != ft_strlen1(var->map[0]) - 1)
             if ((var->map[0][x + 1] != ' ' && var->map[0][x + 1] != '1'))
-				error_mapB("Around space in First Line", var);
+				error_mapB1("Around space in First Line", var);
 	}
-    else if (ft_strcmpB(str, "last") == 0)
+    else if (ft_strcmpB1(str, "last") == 0)
     {
         if (var->map[y - 1][x] != ' ' && var->map[y - 1][x] != '1' && var->map[y - 1][x] != '\0')
-                error_mapB("Around space In Last Line", var);
+                error_mapB1("Around space In Last Line", var);
         if (x > 0)
             if ((var->map[y][x - 1] != ' ' && var->map[y][x - 1] != '1'))
-                error_mapB("eAround space in Last Line", var);
+                error_mapB1("eAround space in Last Line", var);
         if (x != ft_strlen1(var->map[y]) - 1)
             if ((var->map[y][x + 1] != ' ' && var->map[y][x + 1] != '1'))
-				error_mapB("Around space in Last Line", var);
+				error_mapB1("Around space in Last Line", var);
     }      
 }
 
@@ -69,7 +69,7 @@ void    check_lines_bonus(t_varb *var)
         if (var->map[0][x] == ' ')
             handle_space_in_linesB(var, x, "first");
 		if (var->map[0][x] != ' ' && var->map[0][x] != '1')
-			error_mapB("First Line", var);
+			error_mapB1("First Line", var);
         x++;
     }
 	x = 0;
@@ -78,7 +78,7 @@ void    check_lines_bonus(t_varb *var)
         if (var->map[y][x] == ' ')
             handle_space_in_linesB(var, x, "last");
 		if (var->map[y][x] != ' ' && var->map[y][x] != '1')
-			error_mapB("Last Line", var);
+			error_mapB1("Last Line", var);
         x++;
     }
 }
@@ -89,18 +89,18 @@ void    handle_space_inside_mapB(t_varb *var, int y, int x)
         if ((var->map[y + 1][x] == '0') || (var->map[y + 1][x] == 'N')
 		    || (var->map[y + 1][x]) == 'S' || (var->map[y + 1][x] == 'E')
 		    || (var->map[y  + 1][x]) == 'W')
-                error_mapB("Around space Inside Map", var);
+                error_mapB1("Around space Inside Map", var);
     if (ft_strlen1(var->map[y - 1]) >= x)
         if ((var->map[y - 1][x] == '0') || (var->map[y - 1][x] == 'N')
 		    || (var->map[y - 1][x]) == 'S' || (var->map[y - 1][x] == 'E')
 		    || (var->map[y  - 1][x]) == 'W')
-                error_mapB("Around space Inside Map", var);
+                error_mapB1("Around space Inside Map", var);
     if (x > 0)
         if ((var->map[y][x - 1] != ' ' && var->map[y][x - 1] != '1'))
-            error_mapB("Around space Inside Map", var);
+            error_mapB1("Around space Inside Map", var);
     if (x != ft_strlen1(var->map[y]) - 1)
         if ((var->map[y][x + 1] != ' ' && var->map[y][x + 1] != '1'))
-			error_mapB("Around space Inside Map", var);
+			error_mapB1("Around space Inside Map", var);
 }
 
 void    check_line_size_bonus(t_varb *var, int y)
@@ -115,7 +115,7 @@ void    check_line_size_bonus(t_varb *var, int y)
         while (var->map[y][len] && var->map[y][len] != '\n')
         {
             if(var->map[y][len] != ' ' && var->map[y][len] != '1')
-                error_mapB("Map Not Arrounded by Walls", var);
+                error_mapB1("Map Not Arrounded by Walls", var);
             len++;            
         }
     }
@@ -151,12 +151,12 @@ void    check_char_bonus(t_varb *var, int y, int x)
             getPlayerPosition_bonus(var ,x ,y);   // init the player's position 
         }
     if (var->count_player > 1 )
-        error_mapB("More than One Player", var);
+        error_mapB1("More than One Player", var);
 	if (var->map[y][x] != ' ' && var->map[y][x] != '1'
 		&& var->map[y][x] != '0' && var->map[y][x] != 'N'
 		&& var->map[y][x] != 'S' && var->map[y][x] != 'E'
 		&& var->map[y][x] != 'W')
-		error_mapB("Invalid character Inside Map", var);
+		error_mapB1("Invalid character Inside Map", var);
 }
 
 void    check_map_bonus(t_varb *var)
@@ -179,5 +179,5 @@ void    check_map_bonus(t_varb *var)
         y++;
     }
     if ( var->count_player == 0)
-        error_mapB("there is No Player", var);
+        error_mapB1("there is No Player", var);
 }
