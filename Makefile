@@ -6,14 +6,14 @@
 #    By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 11:06:04 by bben-aou          #+#    #+#              #
-#    Updated: 2022/11/11 14:21:12 by iomayr           ###   ########.fr        #
+#    Updated: 2022/11/11 16:14:03 by iomayr           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Cub3d
 NAME_BONUS = cub3d_bonus
 
-CFLAGS = -Wall -Wextra -Werror -Imlx -g
+CFLAGS = -Wall -Wextra -Werror -Imlx -fsanitize=address 
 
 src =   main.c \
 	  ./get_next_line/get_next_line.c \

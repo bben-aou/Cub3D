@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:22:44 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/11 14:16:19 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:23:50 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void    set_map_size(t_var *var)
         if (var->mlx->max_len < next)
             var->mlx->max_len = next;
     }
-    var->mlx->width = var->mlx->max_len * TILE_SIZE;
-    var->mlx->height = var->count_line * TILE_SIZE;
+    var->mlx->width = 1000;
+    var->mlx->height = 500;
 }

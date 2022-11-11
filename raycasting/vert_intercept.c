@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:09:17 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/10 18:16:34 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:07:23 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,42 @@ void calcul_first_intercept_v(t_var *var)
     var->ray->y_vert_intercept = var->player->y + (var->ray->x_vert_intercept - var->player->x) * tan(var->ray->rayAngle);
 }
 
+bool check_if_wall(t_var *var, int next_x, int next_y)
+{
+    int y;
+    int x;
+
+    x = (int)floor(next_x / TILE_SIZE);
+    y = (int)floor(next_y / TILE_SIZE);
+    if (y >= var->count_line)
+        return (0);
+    if (var->map[y] && x >= ft_strlen1(var->map[y]))
+        return 0;
+    if (var->map[y][x] != '1')
+        return (0);
+    return (1);
+}
+
 void    getIntersectionVertical(t_var *var)
 {
     double  next_vert_x;
     double  next_vert_y;
+    int     check;
 
+    check = 0;
     var->ray->vert_wall_found = false;
     calcul_first_intercept_v(var);
     calcul_steps_v(var);
     next_vert_x  = var->ray->x_vert_intercept;
     next_vert_y  = var->ray->y_vert_intercept;
     if (var->view->facing_left)
-         next_vert_x -= 1 ;
-    while (next_vert_x >= 0 && next_vert_x <= var->mlx->width && next_vert_y >= 0 && next_vert_y <= var->mlx->height)
+        check = 1 ;
+    while (next_vert_x - check >= 0 && next_vert_x - check <= var->mlx->width && next_vert_y >= 0 && next_vert_y <= var->mlx->height)
     {
-        if (var->map[(int)floor(next_vert_y/ TILE_SIZE)][(int)floor(next_vert_x / TILE_SIZE)] == '1')
+        if (check_if_wall(var, next_vert_x - check, next_vert_y))
         {
             var->ray->vert_wall_found = true;
-            var->ray->vert_wall_hit_x = next_vert_x  + 1;
+            var->ray->vert_wall_hit_x = next_vert_x;
             var->ray->vert_wall_hit_y = next_vert_y ;
             break;
         }

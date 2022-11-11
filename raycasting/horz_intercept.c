@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:13:58 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/10 18:17:34 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:07:17 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,23 @@ void    getIntersectionHorizontal(t_var *var)
 {
     double  next_horz_x;
     double  next_horz_y;
+    int     check;
 
+    check = 0;
     var->ray->horz_wall_found = false;
     calcul_first_intercept_h(var);
     calcul_steps_h(var);
     next_horz_x = var->ray->xintercept;
     next_horz_y = var->ray->yintercept;
     if (var->view->facing_up == 1)
-        next_horz_y -= 1;
-    while (next_horz_x >= 0 && next_horz_x <= var->mlx->width && next_horz_y >= 0 && next_horz_y <= var->mlx->height )
+        check = 1;
+    while (next_horz_x >= 0 && next_horz_x <= var->mlx->width && next_horz_y - check >= 0 && next_horz_y - check <= var->mlx->height)
     {
-        if (var->map[(int)floor(next_horz_y / TILE_SIZE)][(int)floor(next_horz_x / TILE_SIZE)] == '1')
+        if (check_if_wall(var, next_horz_x, next_horz_y - check))
         {
             var->ray->horz_wall_found = true;
             var->ray->horizontalWallHitX = next_horz_x;
-            var->ray->horizontalWallHitY = next_horz_y + 1 ;
+            var->ray->horizontalWallHitY = next_horz_y;
             break;
         }
         else

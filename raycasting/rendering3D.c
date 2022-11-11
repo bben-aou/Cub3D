@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:28:45 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/11 10:44:59 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:00:05 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ void init_texture_img(t_var *var)
     var->texture->north_texture->img->addr = (int *)mlx_get_data_addr(var->n_texture,\
 		&var->texture->north_texture->img->bpp, &var->texture->north_texture->img->line_len,\
 		&var->texture->north_texture->img->endian);
-
+    // for (int i = 0;  var->texture->north_texture->img->addr[i]; i++)
+    // {
+        // printf("%d\n", i);
+    
     var->s_texture = mlx_xpm_file_to_image(var->mlx->init, var->texture->south_texture->path,
                                            &var->texture->south_texture->width_txt, &var->texture->south_texture->height_txt);
     var->texture->south_texture->img->addr = (int *)mlx_get_data_addr(var->s_texture,\

@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/11 14:19:22 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:22:16 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -399,5 +399,7 @@ void draw_texture(t_var *var, int id);
 // int draw_minimap(t_var *var);
 
  int    draw_minimap(t_var *var);
+
+ bool check_if_wall(t_var *var, int next_x, int next_y);
 
 #endif
