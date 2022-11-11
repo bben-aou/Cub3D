@@ -2,7 +2,7 @@
 
 
 
-      NO ./textures/texture1
+      NO ./textures/texture1.xpm
 SO ./textures/texture2
 WE ./textures/texture3
 EA ./textures/texture4

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   showMiniMap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:26:00 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 11:10:30 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:23:28 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void    rendering3D_bonus(t_varb *var)
 
             //  ----------- draw Walls ------------- //    
             draw_wall_bonus(i ,y1, y2,i,var); 
-        // launchRays(var);
         var->ray->rayAngle += var->ray->fov / var->mlx->width;  
         i++;
     }

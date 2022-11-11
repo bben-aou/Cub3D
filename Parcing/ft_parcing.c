@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parcing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:38:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/09 16:59:50 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:56:54 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void    ft_allocation_var(t_var *var)
     var->view = (t_view *)malloc(sizeof(t_view));
     var->mlx->imgWall = (t_img *)malloc(sizeof(t_img));
     var->mlx->miniMap = (t_img *)malloc(sizeof(t_img));
+    var->texture->north_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
+    var->texture->south_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
+    var->texture->east_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
+    var->texture->west_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
 }
 
 void    ft_init_textures_var(t_var *var)
@@ -58,24 +62,24 @@ void    ft_init_raycasting_var(t_var *var)
     //      Horizontal vars    //
     var->ray->xWallHit = 0;
     var->ray->yWallHit = 0;
-    var->ray->horizontalWallFound = 0;
+    var->ray->horz_wall_found = 0;
     var->ray->horizontalWallHitX = 0;
     var->ray->horizontalWallHitY = 0;
 
     //      Vertical vars    //
-    var->ray->verticalWallHitX = 0;
-    var->ray->verticalWallHitY = 0;
-    var->ray->verticalWallFound = 0;
+    var->ray->vert_wall_hit_x = 0;
+    var->ray->vert_wall_hit_y = 0;
+    var->ray->vert_wall_found = 0;
     var->ray->distance = 0;
     var->ray->wasHitVertical = 0;
 }
 
 void    ft_init_facing_var(t_var *var)
 {
-    var->view->facingDown = 0;
-    var->view->facingUp = 0;
-    var->view->facingRight = 0;
-    var->view->facingLeft = 0;
+    var->view->facing_down = 0;
+    var->view->facing_up = 0;
+    var->view->facing_right = 0;
+    var->view->facing_left = 0;
 }
 
 void    ft_init(t_var *var)

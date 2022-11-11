@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 08:31:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 16:00:06 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:03:05 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	cross(t_var *var)
 
 void    drawAll(t_var *var)
 {
+
     var->player->rotationAngle += var->player->turnLeftRight * var->player->rotationSpeed;
     mlx_clear_window(var->mlx,var->mlx->win);
     rendering3D(var);

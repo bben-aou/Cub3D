@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 08:57:23 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 19:12:34 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,24 @@
 # include <mlx.h> 
 # include <math.h>
 # include <limits.h>
+# include <stdbool.h>
 
 # include "./get_next_line/get_next_line.h"
 # include "./bonus/cub3d_bonus.h"
 
-#define TILE_SIZE 36 
+#define TILE_SIZE 64
 #define SCALE_MINI_MAP 0.2
 
 typedef struct s_img
+{
+	void	*img;
+	int     *addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_img_txt;
+
+typedef struct s_img_txt
 {
 	void	*img;
 	char	*addr;
@@ -89,42 +99,50 @@ typedef struct s_raycasting
     double  xstep;
     double  ystep;
     double  horizDistance;
-    int     horizontalWallFound;
     double  horizontalWallHitX;
     double  horizontalWallHitY;
+    bool     horz_wall_found;
 
     //  ------------- vertical variables -------------- //
-    double  verticalWallHitX;
-    double  verticalWallHitY;
-    double  xVerticalIntercept;
-    double  yVerticalIntercept;
-    double  xVerticalStep;
-    double  yVerticalStep;
+    double  vert_wall_hit_x;
+    double  vert_wall_hit_y;
+    double  x_vert_intercept;
+    double  y_vert_intercept;
+    double  x_vert_step;
+    double  y_vert_step;
     double  verticDistance;
-    int     verticalWallFound;
+    bool     vert_wall_found;
+    bool  	wasHitVertical;
 
-
-
-    int  wasHitVertical;
-
+	double 	wall_height;
     double  distance;
 
+	double offset_x;
+	double offset_y;
+
+	int		p_color;
+
+	double wall_top;
+	double wall_bottom;
 } t_raycasting;
 
 typedef struct s_view
 {
-    int facingUp;
-    int facingDown;
-    int facingRight;
-    int facingLeft;
+    int facing_up;
+    int facing_down;
+    int facing_right;
+    int facing_left;
 
 } t_view;
 
 typedef struct s_textureData
 {
-    char    *id;
-    char    *path;
-    int     onlyOne;
+    t_img_txt	*img;
+    char		*id;
+    char		*path;
+	int			width_txt;
+	int			height_txt;
+    int			onlyOne;
 } t_textureData;
 
 typedef struct s_texture
@@ -182,6 +200,11 @@ typedef struct s_var
     char    *mapInLine; 
     int     count_player;
     int     nothing;
+	// ----------------- TExture ------------------ //
+	void	*n_texture;
+	void	*s_texture;
+	void	*e_texture;
+	void	*w_texture;
 
 } t_var;
 
@@ -342,7 +365,6 @@ void    initKeys(t_var *var);
 
 
 void    setUpRay(t_var *var);
-void    launchRays(t_var *var);
 void    raycatsing(t_var *var);
 void    normalizingRayAngle(t_var *var);
 void    normilizeAngle(t_var *var);
@@ -361,7 +383,8 @@ void my_img_pix_put2(t_var *var, int x, int y, int color);
 void drawCeillingFloor(t_var *var);
 void    initMapImg(t_var *var);
 
-
+void compare_distance(t_var *var);
+void draw_texture(t_var *var, int id);
 
 // void draw_map1(t_var *var);
 // void draw_cube1(t_var *var, int width, int height, char *color);

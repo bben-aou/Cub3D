@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+         #
+#    By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 11:06:04 by bben-aou          #+#    #+#              #
-#    Updated: 2022/11/10 15:14:18 by bben-aou         ###   ########.fr        #
+#    Updated: 2022/11/10 19:13:01 by iomayr           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,12 @@ src =   main.c \
 	  ./Parcing/check_map.c \
 	  ./player_moves/playerHookCheck.c \
 	  ./player_moves/playerTools.c \
-	  ./raycasting/cast_rays.c \
-	  ./raycasting/launch_rays.c \
+	  ./raycasting/compare_distance.c \
 	  ./raycasting/rendering3D.c \
-	  ./raycasting/rendering_walls.c \
 	  ./FoorAndCeilling/drawFloorAndCeilling.c \
+	  ./raycasting/vert_intercept.c \
+	  ./raycasting/horz_intercept.c \
+	  ./raycasting/draw_texture.c \
 
 src_bonus = ./bonus/cub3d_bonus.c \
 			./get_next_line/get_next_line.c \
@@ -62,7 +63,7 @@ src_bonus = ./bonus/cub3d_bonus.c \
 			./bonus/renderingToolsBonus.c \
 			./bonus/playerToolsBonus.c \
 			./bonus/playerHookBonus.c \
-			./bonus/cast_rays_bonus.c
+			./bonus/cast_rays_bonus.c \
 
 
 	

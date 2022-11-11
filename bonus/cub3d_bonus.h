@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:37 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 15:11:44 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:58:56 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # include "../get_next_line/get_next_line.h"
 
-#define TILE_SIZE 36 
+#define TILE_SIZE 64 
 #define SCALE_MINI_MAP 0.2
 
 typedef struct s_imgb
