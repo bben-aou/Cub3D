@@ -1,0 +1,2 @@
+Bye
+[1;32mMap is Clear[0;m

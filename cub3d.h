@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 19:12:34 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/11 14:19:22 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@
 # include <stdbool.h>
 
 # include "./get_next_line/get_next_line.h"
-# include "./bonus/cub3d_bonus.h"
 
-#define TILE_SIZE 64
+#define TILE_SIZE 32
 #define SCALE_MINI_MAP 0.2
 
 typedef struct s_img
