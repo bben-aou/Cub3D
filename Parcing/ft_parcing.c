@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parcing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:38:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 17:56:54 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/12 09:37:41 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,28 @@ void    ft_init_facing_var(t_var *var)
     var->view->facing_left = 0;
 }
 
+void    ft_init_colors(t_var *var)
+{
+    var->clrf->i = 0;
+    var->clrf->i = 0;
+    var->clrf = (t_colors *)malloc(sizeof(t_colors)); 
+    var->clrc = (t_colors *)malloc(sizeof(t_colors));
+    var->clrf->r_hex = (char *)malloc(sizeof(char) * 3);
+    var->clrf->g_hex = (char *)malloc(sizeof(char) * 3);
+    var->clrf->b_hex = (char *)malloc(sizeof(char) * 3);
+    var->clrc->r_hex = (char *)malloc(sizeof(char) * 3);
+    var->clrc->g_hex = (char *)malloc(sizeof(char) * 3);
+    var->clrc->b_hex = (char *)malloc(sizeof(char) * 3);
+    
+}
+
 void    ft_init(t_var *var)
 {
     ft_allocation_var(var);
     ft_init_textures_var(var);
     ft_init_raycasting_var(var);
     ft_init_facing_var(var);
+    ft_init_colors(var);
     var->components = 0;
     var->status = 0;
     var->count_player = 0;

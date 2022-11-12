@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/11 18:22:16 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/12 09:29:42 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,15 @@ typedef struct s_ceillibData
     int     onlyC;
 }  t_ceillibData;    
 
+typedef struct s_colors
+{
+    char    *hex_color;
+    char    *r_hex;
+    char    *g_hex;
+    char    *b_hex;
+    int     i;
+} t_colors;
+
 typedef struct s_var
 {
     int              fd;
@@ -184,6 +193,8 @@ typedef struct s_var
     t_keyPressed    *keyPerssed;
     t_raycasting    *ray;
     t_view          *view;
+    t_colors        *clrf;
+    t_colors        *clrc;
 
     char            **idTextures;
 
@@ -400,6 +411,8 @@ void draw_texture(t_var *var, int id);
 
  int    draw_minimap(t_var *var);
 
- bool check_if_wall(t_var *var, int next_x, int next_y);
-
+ bool   check_if_wall(t_var *var, int next_x, int next_y);
+ void   ft_init_colors(t_var *var);
+void    convert_floor_colors(t_var *var);
+void    convert_ceilling_colors(t_var *var);
 #endif

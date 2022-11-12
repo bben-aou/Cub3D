@@ -6,7 +6,7 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 07:57:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/09 16:21:48 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/12 09:46:48 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void drawCeillingFloor(t_var *var)
         while (v < var->mlx->width)
         {
             if (t <= var->mlx->height/2 )
-		        my_img_pix_put2(var, v, t, 0x509ee5);
+		        my_img_pix_put2(var, v, t,(int) var->clrf->hex_color); //0x509ee5
             else
-		        my_img_pix_put2(var, v, t, 0xEEEEEE);
+		        my_img_pix_put2(var, v, t,(int) var->clrc->hex_color); //0xEEEEEE
             v++;
         }
         t++;
