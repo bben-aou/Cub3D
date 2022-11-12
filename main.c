@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 08:31:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/12 09:41:45 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/12 11:03:04 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ int main(int argc, char **argv)
     setUpAll(&var);
     convert_floor_colors(&var);
     convert_ceilling_colors(&var);
-    printf("%s\n",var.clrc->hex_color);
-    printf("%s\n",var.clrf->hex_color);
-
     mlx_hook(var.mlx->win, 2,1L<<2, key_hook, &var);
     mlx_hook(var.mlx->win, 3, 1L<<0, key_release, &var);
 	mlx_hook(var.mlx->win, 17, 1L << 17, cross, &var);

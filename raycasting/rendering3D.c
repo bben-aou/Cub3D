@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:28:45 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/11 16:00:05 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/12 11:05:41 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ void rendering3D(t_var *var)
     init_texture_img(var);
     drawCeillingFloor(var);
     while (id < var->mlx->width)
-    {
-        
+    {  
         normalizingRayAngle(var);
         get_intersection(var);
         compare_distance(var);

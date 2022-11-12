@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:20:49 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/12 08:48:00 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/12 15:00:25 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void    check_line_size(t_var *var, int y)
     int len;
 
     len = ft_strlen1(var->map[y - 1]);
-    if (len < ft_strlen1(var->map[y + 1]))
+    if (len > ft_strlen1(var->map[y + 1]))
         len = ft_strlen1(var->map[y + 1]);
     if (len < ft_strlen1(var->map[y]))
     {

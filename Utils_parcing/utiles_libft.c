@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utiles_libft.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:52:24 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/09 17:10:43 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:16:15 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	error_mapB(char *msg, t_var *var)
 {
 	var->nothing = 0;
     printf("Oups Error : %s\n", msg);
+
     exit(1);
 }

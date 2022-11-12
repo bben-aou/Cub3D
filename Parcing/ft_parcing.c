@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parcing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:38:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/12 09:37:41 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:20:51 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void    ft_checkValidRgb(t_var *var)
     while (var->tmpRgb[i])
         i++;
     if (i != 3)
-        ft_messageError("\033[91mThe RGB Vaue should be in this form exp : 0, 255, 255 !\033[91m");
+        error_mapB("\033[91mThe RGB Vaue should be in this form exp : 0, 255, 255 !\033[91m", var);
 }
 
         //   ------   The function of parcing and storing the data of RGB     ------   //
@@ -251,7 +251,7 @@ void    ft_checkTextures(t_var *var)
     if(var->components != 2 )
         ft_messageError("\033[91mInvalid Syntax textures !\033[91m");
     if (open(var->tmpMap[1], O_RDONLY) == -1)
-        ft_messageError("\033[91mWrong Path or Permessions of textures !\033[91m");
+        error_mapB("\033[91mWrong Path or Permessions of textures !\033[91m", var);
 }
 
         //   ------   The function of checking the syntax of Floor and Ceillig    ------   //

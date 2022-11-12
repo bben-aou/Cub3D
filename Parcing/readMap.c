@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:21:41 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/09 17:04:22 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:20:28 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	read_map(t_var *var)
 	var->save = get_next_lineB(var->fd, var);
 	var->mapInLine = ft_strjoin(lineToJoin, var->save);
 	var->map = ft_splitB(var->mapInLine, '\n');
+	free(var->save);
 	i = 0;
 	if (var->map == NULL)
 		error_mapB("Occured during Split of Data!!!", var);
