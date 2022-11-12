@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/12 11:33:23 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:34:04 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -415,4 +415,6 @@ void draw_texture(t_var *var, int id);
  void   ft_init_colors(t_var *var);
 void    convert_floor_colors(t_var *var);
 void    convert_ceilling_colors(t_var *var);
+
+void init_texture_img(t_var *var);
 #endif

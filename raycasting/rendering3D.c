@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:28:45 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/12 11:05:41 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/12 17:34:30 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,12 @@ void    get_intersection(t_var *var)
 }
 
 void init_texture_img(t_var *var)
-{
-    var->mlx->imgWall->img = mlx_new_image(var->mlx->init, var->mlx->width, var->mlx->height);
-    var->mlx->imgWall->addr = mlx_get_data_addr(var->mlx->imgWall->img, &var->mlx->imgWall->bpp, &var->mlx->imgWall->line_len,
-                                                &var->mlx->imgWall->endian);
-                                                
+{                                               
     var->n_texture = mlx_xpm_file_to_image(var->mlx->init, var->texture->north_texture->path,
                                            &var->texture->north_texture->width_txt, &var->texture->north_texture->height_txt);
     var->texture->north_texture->img->addr = (int *)mlx_get_data_addr(var->n_texture,\
 		&var->texture->north_texture->img->bpp, &var->texture->north_texture->img->line_len,\
 		&var->texture->north_texture->img->endian);
-    // for (int i = 0;  var->texture->north_texture->img->addr[i]; i++)
-    // {
-        // printf("%d\n", i);
     
     var->s_texture = mlx_xpm_file_to_image(var->mlx->init, var->texture->south_texture->path,
                                            &var->texture->south_texture->width_txt, &var->texture->south_texture->height_txt);
@@ -114,7 +107,9 @@ void rendering3D(t_var *var)
 
     id = 0;
     var->ray->rayAngle = var->player->rotationAngle - var->ray->fov / 2;
-    init_texture_img(var);
+    var->mlx->imgWall->img = mlx_new_image(var->mlx->init, var->mlx->width, var->mlx->height);
+    var->mlx->imgWall->addr = mlx_get_data_addr(var->mlx->imgWall->img, &var->mlx->imgWall->bpp, &var->mlx->imgWall->line_len,
+                                                &var->mlx->imgWall->endian);
     drawCeillingFloor(var);
     while (id < var->mlx->width)
     {  
