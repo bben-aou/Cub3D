@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:20:49 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/09 17:09:23 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/12 08:48:00 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void    handle_space_in_lines(t_var *var, int x, char *str)
     y = var->count_line - 1;
     if (ft_strcmpB(str, "first") == 0)
     {
-        if (var->map[1][x] != ' ' && var->map[1][x] != '1' && var->map[1][x] != '\0')
+        if (ft_strlen1(var->map[1]) >= x)
+            if (var->map[1][x] != ' ' && var->map[1][x] != '1' && var->map[1][x] != '\0')
                 error_mapB("Around space In first Line", var);
         if (x > 0)
             if ((var->map[0][x - 1] != ' ' && var->map[0][x - 1] != '1'))
@@ -46,7 +47,8 @@ void    handle_space_in_lines(t_var *var, int x, char *str)
 	}
     else if (ft_strcmpB(str, "last") == 0)
     {
-        if (var->map[y - 1][x] != ' ' && var->map[y - 1][x] != '1' && var->map[y - 1][x] != '\0')
+        if (ft_strlen1(var->map[y - 1]) >= x)
+            if (var->map[y - 1][x] != ' ' && var->map[y - 1][x] != '1' && var->map[y - 1][x] != '\0')
                 error_mapB("Around space In Last Line", var);
         if (x > 0)
             if ((var->map[y][x - 1] != ' ' && var->map[y][x - 1] != '1'))
