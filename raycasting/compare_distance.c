@@ -6,28 +6,28 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:00:31 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 19:14:02 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/13 11:58:08 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-double  get_horz_distance(t_var *var)
+double get_horz_distance(t_var *var)
 {
-    double  value;
-    double  deltaX;
-    double  deltaY;
-    
-    deltaX = pow(var->ray->horizontalWallHitX - var->player->x, 2);
-    deltaY = pow(var->ray->horizontalWallHitY - var->player->y, 2);
+    double value;
+    double deltaX;
+    double deltaY;
+
+    deltaX = pow(var->ray->horz_wall_hit_x - var->player->x, 2);
+    deltaY = pow(var->ray->horz_wall_hit_y - var->player->y, 2);
     value = sqrt(deltaX + deltaY);
     return (value);
 }
 
-double  get_vert_distance(t_var *var)
+double get_vert_distance(t_var *var)
 {
-    double  value;
-    double  deltaX;
+    double value;
+    double deltaX;
     double deltaY;
 
     deltaX = pow(var->ray->vert_wall_hit_x - var->player->x, 2);
@@ -38,39 +38,36 @@ double  get_vert_distance(t_var *var)
 
 void compare_distance_here(t_var *var)
 {
-    if (var->ray->horizDistance < var->ray->verticDistance)
+    if (var->ray->horz_distance < var->ray->vert_distance)
     {
-        var->ray->xWallHit = var->ray->horizontalWallHitX;
-        var->ray->yWallHit = var->ray->horizontalWallHitY;
-
+        var->ray->x_wall_hit = var->ray->horz_wall_hit_x;
+        var->ray->y_wall_hit = var->ray->horz_wall_hit_y;
     }
     else
     {
-        var->ray->xWallHit = var->ray->vert_wall_hit_x;
-        var->ray->yWallHit = var->ray->vert_wall_hit_y;
-
+        var->ray->x_wall_hit = var->ray->vert_wall_hit_x;
+        var->ray->y_wall_hit = var->ray->vert_wall_hit_y;
     }
-    if (var->ray->horizDistance < var->ray->verticDistance)
-        var->ray->distance = var->ray->horizDistance;
-    else  
-        var->ray->distance = var->ray->verticDistance;
-    
-    if (var->ray->verticDistance < var->ray->horizDistance)
-        var->ray->wasHitVertical = true;
+    if (var->ray->horz_distance < var->ray->vert_distance)
+        var->ray->distance = var->ray->horz_distance;
     else
-        var->ray->wasHitVertical = false;
-    
+        var->ray->distance = var->ray->vert_distance;
+
+    if (var->ray->vert_distance < var->ray->horz_distance)
+        var->ray->was_hit_vert = true;
+    else
+        var->ray->was_hit_vert = false;
 }
 
 void compare_distance(t_var *var)
 {
     if (var->ray->horz_wall_found == true)
-        var->ray->horizDistance = get_horz_distance(var);
+        var->ray->horz_distance = get_horz_distance(var);
     else
-        var->ray->horizDistance = LONG_MAX;
+        var->ray->horz_distance = LONG_MAX;
     if (var->ray->vert_wall_found == true)
-        var->ray->verticDistance = get_vert_distance(var);
+        var->ray->vert_distance = get_vert_distance(var);
     else
-        var->ray->verticDistance = LONG_MAX;
+        var->ray->vert_distance = LONG_MAX;
     compare_distance_here(var);
 }

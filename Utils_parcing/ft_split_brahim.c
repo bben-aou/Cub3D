@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_splitBrahim.c                                   :+:      :+:    :+:   */
+/*   ft_split_brahim.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,10 +12,10 @@
 
 #include "../cub3d.h"
 
-static int	find(char *s, char c)
+static int find(char *s, char c)
 {
-	int	p;
-	int	j;
+	int p;
+	int j;
 
 	p = 1;
 	j = 0;
@@ -35,10 +35,10 @@ static int	find(char *s, char c)
 	return (p);
 }
 
-static char	*ft_print(char *s, size_t start, size_t end)
+static char *ft_print(char *s, size_t start, size_t end)
 {
-	char	*ptr;
-	int		i;
+	char *ptr;
+	int i;
 
 	i = 0;
 	ptr = malloc((end - start + 1) * (sizeof(char)));
@@ -52,12 +52,12 @@ static char	*ft_print(char *s, size_t start, size_t end)
 	return (ptr);
 }
 
-char	**ft_splitB(char *s, char c)
+char **ft_split_b(char *s, char c)
 {
-	char	**ptr;
-	int		p;
-	int		j;
-	int		i;
+	char **ptr;
+	int p;
+	int j;
+	int i;
 
 	i = -1;
 	j = 0;

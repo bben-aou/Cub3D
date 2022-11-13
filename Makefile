@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+         #
+#    By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 11:06:04 by bben-aou          #+#    #+#              #
-#    Updated: 2022/11/12 09:36:38 by bben-aou         ###   ########.fr        #
+#    Updated: 2022/11/13 14:16:17 by iomayr           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ src =   main.c \
 	  ./utils/messages.c \
 	  ./Parcing/ft_parcing.c \
 	  ./Utils_parcing/utiles_libft.c \
-	  ./Utils_parcing/ft_splitBrahim.c \
+	  ./Utils_parcing/ft_split_brahim.c \
 	  ./Parcing/readMap.c \
 	  ./Parcing/check_map.c \
 	  ./player_moves/playerHookCheck.c \
@@ -53,14 +53,14 @@ src_bonus = ./bonus/cub3d_bonus.c \
 	        ./bonus/utils/ft_strdup.c \
 	        ./bonus/utils/messages.c \
 	        ./bonus/Utils_parcing/utiles_libft.c \
-	        ./bonus/Utils_parcing/ft_splitBrahim.c \
+	        ./bonus/Utils_parcing/ft_split_brahim.c \
 	        ./bonus/ft_parcing_bonus.c \
 	        ./bonus/readMap_bonus.c \
 	        ./bonus/check_map_bonus.c \
 			./bonus/direction_line_bonus.c \
 			./bonus/draw_mini_map_bonus.c \
 			./bonus/drawFloorAndCeilling_bonus.c \
-			./bonus/showMiniMap.c \
+			./bonus/showmini_map.c \
 			./bonus/renderingToolsBonus.c \
 			./bonus/playerToolsBonus.c \
 			./bonus/playerHookBonus.c \

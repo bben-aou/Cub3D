@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 14:37:41 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/11 14:20:06 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:18:35 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@
 int key_hook(int key, t_var *var)
 {
     if (key == 123)
-        var->keyPerssed->keyTurnLeft = 1;
+        var->keyPerssed->key_turn_left = 1;
     if (key == 124)
-        var->keyPerssed->keyTurnRight = 1;
+        var->keyPerssed->key_turn_right = 1;
     if (key == 13)
-        var->keyPerssed->keyW = 1;
+        var->keyPerssed->key_w = 1;
     if (key == 1)
         // move back
-        var->keyPerssed->keyS = 1;
+        var->keyPerssed->key_s = 1;
     if (key == 0)
         // move left
-        var->keyPerssed->keyA = 1;
+        var->keyPerssed->key_a = 1;
     if (key == 2)
         // move right
-        var->keyPerssed->keyD = 1;
+        var->keyPerssed->key_d = 1;
     if (key == 53)
         cross(var);
     return (0);
@@ -46,57 +46,57 @@ int key_release(int key, t_var *var)
     if (key == 123)
     {
         // // left view  (rotation)
-        var->player->turnLeftRight = 0;
-        var->keyPerssed->keyTurnLeft = 0;
+        var->player->turn_left_right = 0;
+        var->keyPerssed->key_turn_left = 0;
     }
     if (key == 124)
     {
         // // right view  (rotation)
-        var->player->turnLeftRight = 0;
-        var->keyPerssed->keyTurnRight = 0;
+        var->player->turn_left_right = 0;
+        var->keyPerssed->key_turn_right = 0;
     }
     if (key == 13)
     {
         // move forward
-        var->player->walkBackForward = 0;
-        var->keyPerssed->keyW = 0;
+        var->player->walk_back_forward = 0;
+        var->keyPerssed->key_w = 0;
     }
     if (key == 1)
     {
         // move back
-        var->player->walkBackForward = 0;
-        var->keyPerssed->keyS = 0;
+        var->player->walk_back_forward = 0;
+        var->keyPerssed->key_s = 0;
     }
     if (key == 0)
     {
         // move left
-        var->player->walkBackForward = 0;
-        var->keyPerssed->keyA = 0;
+        var->player->walk_back_forward = 0;
+        var->keyPerssed->key_a = 0;
     }
     if (key == 2)
     {
         // move right
-        var->player->walkBackForward = 0;
-        var->keyPerssed->keyD = 0;
+        var->player->walk_back_forward = 0;
+        var->keyPerssed->key_d = 0;
     }
     if (key == 53)
         cross(var);
     return (0);
 }
 
-void normilizeAngle(t_var *var)
+void normalize_angle(t_var *var)
 {
 
-    var->player->rotationAngle = fmod(var->player->rotationAngle, 2 * M_PI);
-    if (var->player->rotationAngle < 0)
-        var->player->rotationAngle += 2 * M_PI;
+    var->player->rotatin_angle = fmod(var->player->rotatin_angle, 2 * M_PI);
+    if (var->player->rotatin_angle < 0)
+        var->player->rotatin_angle += 2 * M_PI;
 }
 
-void normalizingRayAngle(t_var *var)
+void normalizingray_angle(t_var *var)
 {
-    var->ray->rayAngle = fmod(var->ray->rayAngle, 2 * M_PI);
-    if (var->ray->rayAngle < 0)
-        var->ray->rayAngle += 2 * M_PI;
+    var->ray->ray_angle = fmod(var->ray->ray_angle, 2 * M_PI);
+    if (var->ray->ray_angle < 0)
+        var->ray->ray_angle += 2 * M_PI;
 }
 
 int checkIfWall(t_var *var, int status)
@@ -106,24 +106,24 @@ int checkIfWall(t_var *var, int status)
 
     if (status == 1)
     {
-        posX = floor((var->player->x + cos(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
-        posY = floor((var->player->y + sin(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
+        posX = floor((var->player->x + cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posY = floor((var->player->y + sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
     }
 
     else if (status == 2)
     {
-        posX = floor((var->player->x - cos(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
-        posY = floor((var->player->y - sin(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
+        posX = floor((var->player->x - cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posY = floor((var->player->y - sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
     }
     else if (status == 3)
     {
-        posX = floor((var->player->x - sin(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
-        posY = floor((var->player->y + cos(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
+        posX = floor((var->player->x - sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posY = floor((var->player->y + cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
     }
     else if (status == 4)
     {
-        posX = floor((var->player->x + sin(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
-        posY = floor((var->player->y - cos(var->player->rotationAngle) * var->player->moveSpeed) / TILE_SIZE);
+        posX = floor((var->player->x + sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posY = floor((var->player->y - cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
     }
 
     if (var->map[posY][posX] == '1')
@@ -144,55 +144,55 @@ int checkIfWall(t_var *var, int status)
     return (0);
 }
 
-void keyPressedAction(t_var *var)
+void key_pressed_action(t_var *var)
 {
 
-    normilizeAngle(var);
+    normalize_angle(var);
 
-    if (var->keyPerssed->keyW == 1)
+    if (var->keyPerssed->key_w == 1)
     {
         if (checkIfWall(var, 1) == 0)
         {
-            var->player->walkBackForward = 1;
-            var->player->moveStep = var->player->walkBackForward * var->player->moveSpeed;
-            var->player->x += cos(var->player->rotationAngle) * var->player->moveSpeed;
-            var->player->y += sin(var->player->rotationAngle) * var->player->moveSpeed;
+            var->player->walk_back_forward = 1;
+            var->player->move_step = var->player->walk_back_forward * var->player->move_speed;
+            var->player->x += cos(var->player->rotatin_angle) * var->player->move_speed;
+            var->player->y += sin(var->player->rotatin_angle) * var->player->move_speed;
         }
     }
-    if (var->keyPerssed->keyS == 1)
+    if (var->keyPerssed->key_s == 1)
     {
         if (checkIfWall(var, 2) == 0)
         {
-            var->player->walkBackForward = -1;
-            var->player->moveStep = var->player->walkBackForward * var->player->moveSpeed;
-            var->player->x -= cos(var->player->rotationAngle) * var->player->moveSpeed;
-            var->player->y -= sin(var->player->rotationAngle) * var->player->moveSpeed;
+            var->player->walk_back_forward = -1;
+            var->player->move_step = var->player->walk_back_forward * var->player->move_speed;
+            var->player->x -= cos(var->player->rotatin_angle) * var->player->move_speed;
+            var->player->y -= sin(var->player->rotatin_angle) * var->player->move_speed;
         }
     }
-    if (var->keyPerssed->keyD == 1)
+    if (var->keyPerssed->key_d == 1)
     {
         if (checkIfWall(var, 3) == 0)
         {
-            var->player->walkBackForward = 1;
-            var->player->moveStep = var->player->walkBackForward * var->player->moveSpeed;
-            var->player->x -= sin(var->player->rotationAngle) * var->player->moveSpeed;
-            var->player->y += cos(var->player->rotationAngle) * var->player->moveSpeed;
+            var->player->walk_back_forward = 1;
+            var->player->move_step = var->player->walk_back_forward * var->player->move_speed;
+            var->player->x -= sin(var->player->rotatin_angle) * var->player->move_speed;
+            var->player->y += cos(var->player->rotatin_angle) * var->player->move_speed;
         }
     }
-    if (var->keyPerssed->keyA == 1)
+    if (var->keyPerssed->key_a == 1)
     {
         if (checkIfWall(var, 4) == 0)
         {
-            var->player->walkBackForward = -1;
-            var->player->moveStep = var->player->walkBackForward * var->player->moveSpeed;
-            var->player->x += sin(var->player->rotationAngle) * var->player->moveSpeed;
-            var->player->y -= cos(var->player->rotationAngle) * var->player->moveSpeed;
+            var->player->walk_back_forward = -1;
+            var->player->move_step = var->player->walk_back_forward * var->player->move_speed;
+            var->player->x += sin(var->player->rotatin_angle) * var->player->move_speed;
+            var->player->y -= cos(var->player->rotatin_angle) * var->player->move_speed;
         }
     }
-    if (var->keyPerssed->keyTurnLeft == 1)
-        var->player->turnLeftRight = -1;
+    if (var->keyPerssed->key_turn_left == 1)
+        var->player->turn_left_right = -1;
     // the data will be updated before printing the line
-    if (var->keyPerssed->keyTurnRight == 1)
-        var->player->turnLeftRight = 1;
+    if (var->keyPerssed->key_turn_right == 1)
+        var->player->turn_left_right = 1;
     // the data will be updated before printing the line
 }

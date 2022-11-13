@@ -6,17 +6,16 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:52:24 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/12 13:16:15 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:14:54 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-
-char	*ft_strdupB(char *str)
+char *ft_strdup_b(char *str)
 {
-	int		i;
-	char	*ptr;
+	int i;
+	char *ptr;
 
 	i = 0;
 	ptr = malloc(sizeof(char) * ft_strlen1(str) + 1);
@@ -31,9 +30,9 @@ char	*ft_strdupB(char *str)
 	return (ptr);
 }
 
-int	ft_strcmpB(char *str, char *ptr)
+int ft_strcmp_b(char *str, char *ptr)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i] && ptr[i] && str[i] == ptr[i])
@@ -41,10 +40,10 @@ int	ft_strcmpB(char *str, char *ptr)
 	return (str[i] - ptr[i]);
 }
 
-void	error_mapB(char *msg, t_var *var)
+void error_map(char *msg, t_var *var)
 {
 	var->nothing = 0;
-    printf("Oups Error : %s\n", msg);
+	printf("Oups Error : %s\n", msg);
 
-    exit(1);
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:26:49 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/11 18:17:30 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/13 11:55:21 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void calcul_xoffset(t_var *var)
 {
-    if (var->ray->wasHitVertical)
-        var->ray->offset_x = var->ray->yWallHit;
+    if (var->ray->was_hit_vert)
+        var->ray->offset_x = var->ray->y_wall_hit;
     else
-        var->ray->offset_x = var->ray->xWallHit;
+        var->ray->offset_x = var->ray->x_wall_hit;
     var->ray->offset_x /= TILE_SIZE;
     var->ray->offset_x -= floor(var->ray->offset_x);
     var->ray->offset_x *= var->texture->north_texture->width_txt;
@@ -27,27 +27,25 @@ void get_color_from_texture(t_var *var)
 {
     int pixel = 0;
 
-    // pixel = NULL;
-    if (var->ray->wasHitVertical)
+    if (var->ray->was_hit_vert)
     {
         if (var->view->facing_right)
-            pixel = var->texture->east_texture->img->addr[((int)var->ray->offset_y  + (int)var->ray->offset_x)];
+            pixel = var->texture->east_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
         else if (var->view->facing_left)
-            pixel = var->texture->west_texture->img->addr[((int)var->ray->offset_y  + (int)var->ray->offset_x)];
+            pixel = var->texture->west_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
     }
     else
     {
         if (var->view->facing_down)
-            pixel = var->texture->south_texture->img->addr[((int)var->ray->offset_y  + (int)var->ray->offset_x)];
+            pixel = var->texture->south_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
         else if (var->view->facing_up)
-            pixel = var->texture->north_texture->img->addr[((int)var->ray->offset_y  + (int)var->ray->offset_x)];
+            pixel = var->texture->north_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
     }
     var->ray->p_color = pixel;
 }
 
 void draw_texture(t_var *var, int id)
 {
-    // int     distance_from_top = 0;
     double y;
 
     y = var->ray->wall_top;

@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:21:41 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/12 13:20:28 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/13 14:14:41 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static char *get_next_lineB(int fd, t_var *var)
 		i++;
 	}
 	str[i] = '\0';
-	var->buff = ft_strdupB(str);
+	var->buff = ft_strdup_b(str);
 	return (var->buff);
 }
 
-void	initialize_data(t_var *var)
+void initialize_data(t_var *var)
 {
 	var->map = NULL;
 	var->buff = NULL;
@@ -39,13 +39,13 @@ void	initialize_data(t_var *var)
 	var->save = NULL;
 }
 
-int	checkMapSrat(char *str)
+int check_map_start(char *str)
 {
 	int i;
 
 	i = 0;
 	if (!str)
-		ft_messageError("\033[91mThere is no map in the file !\033[91m");
+		ft_msg_error("\033[91mThere is no map in the file !\033[91m");
 	while (str[i])
 	{
 		while (str[i] == ' ')
@@ -53,31 +53,31 @@ int	checkMapSrat(char *str)
 		if (str[i] == '1' || str[i] == '0')
 			return (1);
 		else if (str[i] != '1' && str[i] != '0' && str[i] != ' ' && str[i] != '\n')
-			ft_messageError("Invalid Map !");
+			ft_msg_error("Invalid Map !");
 		else
 			return (0);
 	}
 	return (0);
 }
-void	read_map(t_var *var)
+void read_map(t_var *var)
 {
-	int	i;
+	int i;
 	char *lineToJoin;
 
 	i = 0;
 	lineToJoin = get_next_line(var->fd);
-	while ((checkMapSrat(lineToJoin) == 0) && lineToJoin != NULL)
+	while ((check_map_start(lineToJoin) == 0) && lineToJoin != NULL)
 		lineToJoin = get_next_line(var->fd);
 	if (!lineToJoin)
-		ft_messageError("Invalid Map !");
+		ft_msg_error("Invalid Map !");
 	initialize_data(var);
 	var->save = get_next_lineB(var->fd, var);
 	var->mapInLine = ft_strjoin(lineToJoin, var->save);
-	var->map = ft_splitB(var->mapInLine, '\n');
+	var->map = ft_split_b(var->mapInLine, '\n');
 	free(var->save);
 	i = 0;
 	if (var->map == NULL)
-		error_mapB("Occured during Split of Data!!!", var);
+		error_map("Occured during Split of Data!!!", var);
 	while (var->map[i])
 		i++;
 	var->count_line = i;
