@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:13:58 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/12 17:36:25 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/13 11:19:31 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    getIntersectionHorizontal(t_var *var)
     next_horz_y = var->ray->yintercept;
     if (var->view->facing_up == 1)
         check = 1;
-    while (next_horz_x >= 0 && next_horz_x <= var->mlx->width && next_horz_y - check >= 0 && next_horz_y - check <= var->mlx->height)
+    while (next_horz_x >= 0 && next_horz_x <= var->mlx->max_len * TILE_SIZE && next_horz_y - check >= 0 && next_horz_y - check <= TILE_SIZE * var->count_line)
     {
         if (check_if_wall(var, next_horz_x, next_horz_y - check))
         {

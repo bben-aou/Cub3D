@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:09:17 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/11 18:07:23 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/13 11:19:10 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void    getIntersectionVertical(t_var *var)
     next_vert_y  = var->ray->y_vert_intercept;
     if (var->view->facing_left)
         check = 1 ;
-    while (next_vert_x - check >= 0 && next_vert_x - check <= var->mlx->width && next_vert_y >= 0 && next_vert_y <= var->mlx->height)
+    while (next_vert_x - check >= 0 && next_vert_x - check <= var->mlx->max_len * TILE_SIZE && next_vert_y >= 0 && next_vert_y <= TILE_SIZE * var->count_line)
     {
         if (check_if_wall(var, next_vert_x - check, next_vert_y))
         {
