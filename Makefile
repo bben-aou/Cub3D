@@ -6,7 +6,7 @@
 #    By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 11:06:04 by bben-aou          #+#    #+#              #
-#    Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr        #
+#    Updated: 2022/11/14 11:35:14 by iomayr           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,9 @@ src =   main.c \
 	  ./Parcing/ft_parcing.c \
 	  ./Utils_parcing/utiles_libft.c \
 	  ./Utils_parcing/ft_split_brahim.c \
-	  ./Parcing/readMap.c \
+	  ./Parcing/read_map.c \
 	  ./Parcing/check_map.c \
+	  ./Parcing/check_utiles.c \
 	  ./player_moves/playerHookCheck.c \
 	  ./player_moves/playerTools.c \
 	  ./raycasting/compare_distance.c \
@@ -40,6 +41,7 @@ src =   main.c \
 	  ./raycasting/vert_intercept.c \
 	  ./raycasting/horz_intercept.c \
 	  ./raycasting/draw_texture.c \
+	  ./raycasting/utiles_raycasting.c 
 
 src_bonus = ./bonus/cub3d_bonus.c \
 			./get_next_line/get_next_line.c \

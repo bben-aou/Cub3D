@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:26:49 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/14 10:23:35 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 10:56:05 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,20 @@ void get_color_from_texture(t_var *var)
     if (var->ray->was_hit_vert)
     {
         if (var->view->facing_right)
-            pixel = var->texture->east_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
+            pixel = var->texture->east_texture->img->addr \
+                [((int)var->ray->offset_y + (int)var->ray->offset_x)];
         else if (var->view->facing_left)
-            pixel = var->texture->west_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
+            pixel = var->texture->west_texture->img->addr \
+                [((int)var->ray->offset_y + (int)var->ray->offset_x)];
     }
     else
     {
         if (var->view->facing_down)
-            pixel = var->texture->south_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
+            pixel = var->texture->south_texture->img->addr \
+                [((int)var->ray->offset_y + (int)var->ray->offset_x)];
         else if (var->view->facing_up)
-            pixel = var->texture->north_texture->img->addr[((int)var->ray->offset_y + (int)var->ray->offset_x)];
+            pixel = var->texture->north_texture->img->addr \
+                [((int)var->ray->offset_y + (int)var->ray->offset_x)];
     }
     var->ray->p_color = pixel;
 }

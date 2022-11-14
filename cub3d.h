@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 11:22:48 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,13 +336,10 @@ void handle_space_in_lines(t_var *var, int x, char *str);
 void check_walls(t_var *var);
 int check_map_start(char *str);
 /**************Print map Function****************/
-void ft_draw_map(t_var *var);
 void draw_direction_line(t_var *var, int x, int y);
 void my_img_pix_put(t_var *var, int x, int y, int color);
 
 void draw_line2(t_var *var);
-void draw_map(t_var *var);
-void draw_player2(t_var *var);
 void key_pressed_action(t_var *var);
 void init_keys(t_var *var);
 
@@ -350,8 +347,6 @@ void normalizingray_angle(t_var *var);
 void normalize_angle(t_var *var);
 
 void ddraw_line(t_var *var);
-
-void rendering_walls(t_var *var);
 
 void my_img_pix_put2(t_var *var, int x, int y, int color);
 void draw_ceil_floor(t_var *var);

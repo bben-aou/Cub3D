@@ -6,13 +6,11 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 08:31:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 11:23:34 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-//     ----------------------- Function of closing the windows by clicking the X ---------------------------- //
 
 int cross(t_var *var)
 {
@@ -22,12 +20,11 @@ int cross(t_var *var)
     exit(1);
 }
 
-//     ----------------------- Function of drawing All the element of map frame by frame : ---------------------------- //
-
 void draw_all(t_var *var)
 {
 
-    var->player->rotatin_angle += var->player->turn_left_right * var->player->rotation_speed;
+    var->player->rotatin_angle += var->player->turn_left_right \
+        * var->player->rotation_speed;
     mlx_clear_window(var->mlx, var->mlx->win);
     rendering_3d(var);
 }

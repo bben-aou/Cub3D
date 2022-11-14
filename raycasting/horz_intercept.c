@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:13:58 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/14 08:50:22 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 11:21:09 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ void calcul_steps_h(t_var *var)
         var->ray->xstep *= -1;
 }
 
-void calcul_first_intercept_h(t_var *var)
+void calcul_intercept_steps_h(t_var *var, double *next_x, double *next_y)
 {
     var->ray->yintercept = floor(var->player->y / TILE_SIZE) * TILE_SIZE;
     if (var->view->facing_down == 1)
         var->ray->yintercept += TILE_SIZE;
-    var->ray->xintercept = var->player->x + (var->ray->yintercept - var->player->y) / tan(var->ray->ray_angle);
+    var->ray->xintercept = var->player->x + (var->ray->yintercept - var->player->y)
+         / tan(var->ray->ray_angle);
+    *next_x = var->ray->xintercept;
+    *next_y = var->ray->yintercept;
+    calcul_steps_h(var);
 }
 
 void get_intersection_horz(t_var *var)
@@ -40,13 +44,11 @@ void get_intersection_horz(t_var *var)
 
     check = 0;
     var->ray->horz_wall_found = false;
-    calcul_first_intercept_h(var);
-    calcul_steps_h(var);
-    next_x = var->ray->xintercept;
-    next_y = var->ray->yintercept;
+    calcul_intercept_steps_h(var, &next_x, &next_y);
     if (var->view->facing_up == 1)
         check = 1;
-    while (next_x >= 0 && next_x <= var->mlx->max_len * TILE_SIZE && next_y - check >= 0 && next_y - check <= TILE_SIZE * var->count_line)
+    while (next_x >= 0 && next_x <= var->mlx->max_len * TILE_SIZE 
+        && next_y - check >= 0 && next_y - check <= TILE_SIZE * var->count_line)
     {
         if (check_if_wall(var, next_x, next_y - check))
         {
