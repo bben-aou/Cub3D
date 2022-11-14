@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:51:25 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/14 12:51:59 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 15:45:21 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	init_rest_of_txts(t_var *var)
 			&var->txt->e_txt->height_txt);
 	if (!var->e_txt)
 		error_map("Occured during convert Third txt to img", var);
-	var->txt->e_txt->img->addr = (int *)mlx_get_data_addr(
+	var->txt->e_txt->img->addr = (int *)mlx_get_data_addr(\
 		var->e_txt, &var->txt->e_txt->img->bpp, \
-			&var->txt->e_txt->img->line_len, &var->txt->e_txt->img->endian);
+		&var->txt->e_txt->img->line_len, &var->txt->e_txt->img->endian);
 	var->w_txt = mlx_xpm_file_to_image(var->mlx->init, \
 		var->txt->w_txt->path, &var->txt->w_txt->width_txt, \
 			&var->txt->w_txt->height_txt);
