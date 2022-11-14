@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 11:22:48 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 12:36:28 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 #include "./get_next_line/get_next_line.h"
 
-#define TILE_SIZE 32
+#define T_S 32
 #define SCALE_MINI_MAP 0.2
 
 typedef struct s_img
@@ -132,7 +132,7 @@ typedef struct s_view
 
 } t_view;
 
-typedef struct s_textureData
+typedef struct s_txtData
 {
     t_img_txt *img;
     char *id;
@@ -140,16 +140,16 @@ typedef struct s_textureData
     int width_txt;
     int height_txt;
     int only_one;
-} t_textureData;
+} t_txtData;
 
-typedef struct s_texture
+typedef struct s_txt
 {
-    t_textureData *north_texture;
-    t_textureData *west_texture;
-    t_textureData *south_texture;
-    t_textureData *east_texture;
+    t_txtData *n_txt;
+    t_txtData *w_txt;
+    t_txtData *s_txt;
+    t_txtData *e_txt;
 
-} t_texture;
+} t_txt;
 
 typedef struct s_floorData
 {
@@ -185,7 +185,7 @@ typedef struct s_var
     int status;
     t_mlx *mlx;
     t_player *player;
-    t_texture *texture;
+    t_txt *txt;
     t_floorData *floor;
     t_ceillibData *ceilling;
     t_keyPressed *keyPerssed;
@@ -194,7 +194,7 @@ typedef struct s_var
     t_colors *clrf;
     t_colors *clrc;
 
-    char **id_textures;
+    char **id_txts;
 
     int unsed_avoid;
     int first_draw;
@@ -208,18 +208,18 @@ typedef struct s_var
     char *mapInLine;
     int count_player;
     int nothing;
-    // ----------------- TExture ------------------ //
-    void *n_texture;
-    void *s_texture;
-    void *e_texture;
-    void *w_texture;
+    // ----------------- txt ------------------ //
+    void *n_txt;
+    void *s_txt;
+    void *e_txt;
+    void *w_txt;
 
 } t_var;
 
 //  ================ init functions ================//
 
 void ft_allocation_var(t_var *var);
-void ft_init_textures_var(t_var *var);
+void ft_init_txts_var(t_var *var);
 void ft_init_raycasting_var(t_var *var);
 void ft_init_facing_var(t_var *var);
 void ft_init(t_var *var);
@@ -227,15 +227,15 @@ void initialize_data(t_var *var);
 void get_angle_value(char c, t_var *var);
 void get_player_postion(t_var *var, int x, int y);
 
-//  ================ parcing textures and Ceilling/Floot functions ================//
+//  ================ parcing txts and Ceilling/Floot functions ================//
 void ft_which_id(t_var *var);
-void store_data_texture(t_var *var);
+void store_data_txt(t_var *var);
 void ft_valid_value(int nbr);
 void ft_check_valid_rgb(t_var *var);
 void ft_split_convert_rgb(t_var *var);
 void store_data_floor_ceil(t_var *var);
 void ft_calcul_components(t_var *var);
-void ft_check_textures(t_var *var);
+void ft_check_txts(t_var *var);
 void ft_check_floor_ceil(t_var *var);
 void ft_check_double_id(t_var *var);
 void ft_check_id(t_var *var);
@@ -288,12 +288,12 @@ int ft_check_extension(char *str);
 void ft_read_and_check(t_var *var);
 void ft_read(t_var *var);
 void ft_check_id(t_var *var);
-void ft_check_textures(t_var *var);
+void ft_check_txts(t_var *var);
 void ft_calcul_components(t_var *var);
 void store_data_floor_ceil(t_var *var);
 void ft_split_convert_rgb(t_var *var);
 void ft_valid_value(int nbr);
-void store_data_texture(t_var *var);
+void store_data_txt(t_var *var);
 void ft_which_id(t_var *var);
 void ft_free_array_2d(char **arr);
 void ft_split_convert_rgb(t_var *var);
@@ -352,7 +352,7 @@ void my_img_pix_put2(t_var *var, int x, int y, int color);
 void draw_ceil_floor(t_var *var);
 
 void compare_distance(t_var *var);
-void draw_texture(t_var *var, int id);
+void draw_txt(t_var *var, int id);
 
 int draw_mini_map(t_var *var);
 
@@ -361,5 +361,5 @@ void ft_init_colors(t_var *var);
 void convert_floor_colors(t_var *var);
 void convert_ceilling_colors(t_var *var);
 
-void init_texture_img(t_var *var);
+void init_txt_img(t_var *var);
 #endif

@@ -6,7 +6,7 @@
 #    By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 11:06:04 by bben-aou          #+#    #+#              #
-#    Updated: 2022/11/14 11:35:14 by iomayr           ###   ########.fr        #
+#    Updated: 2022/11/14 14:24:33 by iomayr           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,10 @@ CFLAGS = -Wall -Wextra -Werror -Imlx
 src =   main.c \
 	  ./get_next_line/get_next_line.c \
 	  ./get_next_line/get_next_line_utils.c \
-	  ./utils/ft_atoi.c \
-	  ./utils/ft_checkExtension.c \
+	  ./utils/ft_utiles.c \
 	  ./utils/ft_multisplit.c \
 	  ./utils/ft_split.c \
-	  ./utils/ft_strcmp.c \
-	  ./utils/ft_strlen.c \
 	  ./utils/ft_strdup.c \
-	  ./utils/messages.c \
 	  ./Parcing/ft_parcing.c \
 	  ./Utils_parcing/utiles_libft.c \
 	  ./Utils_parcing/ft_split_brahim.c \

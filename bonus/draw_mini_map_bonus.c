@@ -3,29 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:33:03 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/10 15:15:46 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/14 11:52:25 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./cub3d_bonus.h"
 
-
-void    draw_cube_bonus(t_varb *var, int width, int height, char *color)
+void draw_cube_bonus(t_varb *var, int width, int height, char *color)
 {
     int i;
     int j;
 
     i = height;
-    while (i < (height + TILE_SIZE))
+    while (i < (height + T_S))
     {
         j = width;
-        while (j < (width + TILE_SIZE))
+        while (j < (width + T_S))
         {
             if (ft_strcmp(color, "wall") == 0)
-                my_img_pix_put_bonus(var, j  * SCALE_MINI_MAP, i * SCALE_MINI_MAP , 0x466986 );
+                my_img_pix_put_bonus(var, j * SCALE_MINI_MAP, i * SCALE_MINI_MAP, 0x466986);
             else if (ft_strcmp(color, "empty") == 0)
                 my_img_pix_put_bonus(var, j * SCALE_MINI_MAP, i * SCALE_MINI_MAP, 0xc9d9cf);
             j++;
@@ -34,14 +33,14 @@ void    draw_cube_bonus(t_varb *var, int width, int height, char *color)
     }
 }
 
-void    draw_player_bonus(t_varb *var)
+void draw_player_bonus(t_varb *var)
 {
     int i;
-	int j;
-    
+    int j;
+
     i = var->player->x;
     j = var->player->y;
-            my_img_pix_put_bonus(var, i * SCALE_MINI_MAP   , j * SCALE_MINI_MAP , 0xFF0000);
+    my_img_pix_put_bonus(var, i * SCALE_MINI_MAP, j * SCALE_MINI_MAP, 0xFF0000);
 }
 
 void draw_mini_mapB(t_varb *var)
@@ -56,18 +55,16 @@ void draw_mini_mapB(t_varb *var)
         while (++x < ft_strlen1(var->map[y]))
         {
             if (var->map[y][x] == '1' || var->map[y][x] == ' ')
-                draw_cube_bonus(var, (x * TILE_SIZE), (y * TILE_SIZE), "wall");                  
+                draw_cube_bonus(var, (x * T_S), (y * T_S), "wall");
             else if (var->map[y][x] == '0')
-                draw_cube_bonus(var, (x * TILE_SIZE), (y * TILE_SIZE), "empty");
-            else if ((var->map[y][x] == 'N' || var->map[y][x] == 'S'
-                    || var->map[y][x] == 'E' || var->map[y][x] == 'W')
-                    )
-                	{
-                        draw_cube_bonus(var, (x * TILE_SIZE), (y * TILE_SIZE), "empty");
-                    }
+                draw_cube_bonus(var, (x * T_S), (y * T_S), "empty");
+            else if ((var->map[y][x] == 'N' || var->map[y][x] == 'S' || var->map[y][x] == 'E' || var->map[y][x] == 'W'))
+            {
+                draw_cube_bonus(var, (x * T_S), (y * T_S), "empty");
+            }
             if (x == ft_strlen1(var->map[y]) - 1)
                 while (++x < var->mlx->max_len)
-                    draw_cube_bonus(var, (x * TILE_SIZE), (y * TILE_SIZE), "wall");
+                    draw_cube_bonus(var, (x * T_S), (y * T_S), "wall");
         }
     }
     drawLineBonus(var);
@@ -86,10 +83,9 @@ void draw_mini_mapB(t_varb *var)
 //         if (var->mlx->max_len < next)
 //             var->mlx->max_len = next;
 //     }
-//     var->mlx->width = var->mlx->max_len * TILE_SIZE;
-//     var->mlx->height = var->count_line * TILE_SIZE;
+//     var->mlx->width = var->mlx->max_len * T_S;
+//     var->mlx->height = var->count_line * T_S;
 // }
-
 
 // int    reprint_map_(void *var)
 // {
@@ -98,7 +94,6 @@ void draw_mini_mapB(t_varb *var)
 
 //     return (1);
 // }
-
 
 // void    ft_draw_map(t_var *var)
 // {
@@ -111,11 +106,11 @@ void draw_mini_mapB(t_varb *var)
 //     var->mlx->imgWall->img = mlx_new_image(var->mlx->init, var->mlx->width , var->mlx->height);
 //     var->mlx->imgWall->addr = mlx_get_data_addr(var->mlx->imgWall->img, &var->mlx->imgWall->bpp, &var->mlx->imgWall->line_len,
 //     							&var->mlx->imgWall->endian);
-                                
+
 //     var->mlx->miniMap->img = mlx_new_image(var->mlx->init, var->mlx->width * 4, var->mlx->height * 4 );
 //     var->mlx->miniMap->addr = mlx_get_data_addr(var->mlx->miniMap->img, &var->mlx->miniMap->bpp, &var->mlx->miniMap->line_len,
 //     							&var->mlx->miniMap->endian);
-    
+
 //     setUpAll(var);
 //     mlx_hook(var->mlx->win, 2,1L<<2, key_hook, var);
 //     mlx_hook(var->mlx->win, 3, 1L<<0, key_release, var);

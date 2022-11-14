@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 14:37:41 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/13 14:18:35 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 12:04:51 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int key_hook(int key, t_var *var)
 
 // -------------------------------------------------------------------------------------------------------- //
 
-//     ----------------------- Function of hooking on the key releasted ---------------------------- //
+//     ----------------------- Function of hooking on the key releed ---------------------------- //
 
 int key_release(int key, t_var *var)
 {
@@ -106,40 +106,40 @@ int checkIfWall(t_var *var, int status)
 
     if (status == 1)
     {
-        posX = floor((var->player->x + cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
-        posY = floor((var->player->y + sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posX = floor((var->player->x + cos(var->player->rotatin_angle) * var->player->move_speed) / T_S);
+        posY = floor((var->player->y + sin(var->player->rotatin_angle) * var->player->move_speed) / T_S);
     }
 
     else if (status == 2)
     {
-        posX = floor((var->player->x - cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
-        posY = floor((var->player->y - sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posX = floor((var->player->x - cos(var->player->rotatin_angle) * var->player->move_speed) / T_S);
+        posY = floor((var->player->y - sin(var->player->rotatin_angle) * var->player->move_speed) / T_S);
     }
     else if (status == 3)
     {
-        posX = floor((var->player->x - sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
-        posY = floor((var->player->y + cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posX = floor((var->player->x - sin(var->player->rotatin_angle) * var->player->move_speed) / T_S);
+        posY = floor((var->player->y + cos(var->player->rotatin_angle) * var->player->move_speed) / T_S);
     }
     else if (status == 4)
     {
-        posX = floor((var->player->x + sin(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
-        posY = floor((var->player->y - cos(var->player->rotatin_angle) * var->player->move_speed) / TILE_SIZE);
+        posX = floor((var->player->x + sin(var->player->rotatin_angle) * var->player->move_speed) / T_S);
+        posY = floor((var->player->y - cos(var->player->rotatin_angle) * var->player->move_speed) / T_S);
     }
 
     if (var->map[posY][posX] == '1')
         return (1);
     // ----------------- protect cases when player move between intersection of walls --------------------
     if (var->map[posY][posX - 1] == '1' && var->map[posY + 1][posX] == '1')
-        if ((floor((var->player->y / TILE_SIZE)) == posY + 1) && (floor((var->player->x / TILE_SIZE)) == posX - 1))
+        if ((floor((var->player->y / T_S)) == posY + 1) && (floor((var->player->x / T_S)) == posX - 1))
             return (1);
     if (var->map[posY][posX + 1] == '1' && var->map[posY - 1][posX] == '1')
-        if ((floor((var->player->y / TILE_SIZE)) == posY - 1) && (floor((var->player->x / TILE_SIZE)) == posX + 1))
+        if ((floor((var->player->y / T_S)) == posY - 1) && (floor((var->player->x / T_S)) == posX + 1))
             return (1);
     if (var->map[posY][posX + 1] == '1' && var->map[posY][posX + 1] == '1')
-        if ((floor((var->player->y / TILE_SIZE)) == posY + 1) && (floor((var->player->x / TILE_SIZE)) == posX + 1))
+        if ((floor((var->player->y / T_S)) == posY + 1) && (floor((var->player->x / T_S)) == posX + 1))
             return (1);
     if (var->map[posY][posX - 1] == '1' && var->map[posY - 1][posX] == '1')
-        if ((floor((var->player->y / TILE_SIZE)) == posY - 1) && (floor((var->player->x / TILE_SIZE)) == posX - 1))
+        if ((floor((var->player->y / T_S)) == posY - 1) && (floor((var->player->x / T_S)) == posX - 1))
             return (1);
     return (0);
 }

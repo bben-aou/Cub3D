@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:26:00 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 11:52:25 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void rendering_3d_bonus(t_varb *var)
         getIntersectionVerticalB(var);
         correctDistance = var->ray->distance * cos(var->ray->rayAngle - var->player->rotationAngle);
         distanceProjectionPlane = (var->mlx->width / 2) / tan(var->ray->fov / 2);
-        walllHeight = (TILE_SIZE / correctDistance) * distanceProjectionPlane;
+        walllHeight = (T_S / correctDistance) * distanceProjectionPlane;
         y1 = (var->mlx->height / 2) - (walllHeight / 2);
         if (y1 < 0)
             y1 = 0;

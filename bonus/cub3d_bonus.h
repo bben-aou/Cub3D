@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:37 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 12:36:28 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 #include "../get_next_line/get_next_line.h"
 
-#define TILE_SIZE 64
+#define T_S 64
 #define SCALE_MINI_MAP 0.2
 
 typedef struct s_imgb
@@ -117,21 +117,21 @@ typedef struct s_viewb
 
 } t_viewb;
 
-typedef struct s_textureDatab
+typedef struct s_txtDatab
 {
     char *id;
     char *path;
     int onlyOne;
-} t_textureDatab;
+} t_txtDatab;
 
-typedef struct s_textureb
+typedef struct s_txtb
 {
-    t_textureDatab *north_texture;
-    t_textureDatab *west_texture;
-    t_textureDatab *south_texture;
-    t_textureDatab *east_texture;
+    t_txtDatab *n_txt;
+    t_txtDatab *w_txt;
+    t_txtDatab *s_txt;
+    t_txtDatab *e_txt;
 
-} t_textureb;
+} t_txtb;
 
 typedef struct s_floorDatab
 {
@@ -158,14 +158,14 @@ typedef struct s_varb
     int status;
     t_mlxb *mlx;
     t_playerb *player;
-    t_textureb *texture;
+    t_txtb *txt;
     t_floorDatab *floor;
     t_ceillibDatab *ceilling;
     t_keyPressedb *keyPerssed;
     t_raycastingb *ray;
     t_viewb *view;
 
-    char **idTextures;
+    char **idtxts;
 
     int unsedAvoid;
     int firstDraw;
@@ -208,16 +208,16 @@ void getAngleValue_bonus(char c, t_varb *var);
 void check_map_bonus(t_varb *var);
 void ft_messageErrorB(char *msg);
 void ft_allocation_varB(t_varb *var);
-void ft_init_textures_varB(t_varb *var);
+void ft_init_txts_varB(t_varb *var);
 void ft_init_raycasting_varB(t_varb *var);
 void ft_whichId_bonus(t_varb *var);
-void storeDataTextureB(t_varb *var);
+void storeDatatxtB(t_varb *var);
 void ft_validValueB(int nbr);
 void ft_checkValidRgbB(t_varb *var);
 void ft_splitConvertRgbB(t_varb *var);
 void storeDataFloorCeillingB(t_varb *var);
 void ft_calculComponentsB(t_varb *var);
-void ft_checkTexturesB(t_varb *var);
+void ft_checktxtsB(t_varb *var);
 void ft_checkFloorCeillingB(t_varb *var);
 void ft_checkDoubleIdB(t_varb *var);
 void ft_check_idB(t_varb *var);

@@ -1,9 +1,9 @@
 
-NO ./textures/texture1
+NO ./textures/texture1.xpm
 F 220,100,0
-SO ./textures/texture2
-WE ./textures/texture3
-EA ./textures/texture4
+SO ./textures/texture2.xpm
+WE ./textures/texture3.xpm
+EA ./textures/texture4.xpm
 C 225,30,05
 
 

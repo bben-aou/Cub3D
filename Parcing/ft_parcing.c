@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:38:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/13 17:07:04 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 12:36:28 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void ft_creat_fd(t_var *var, char *str)
 
 void ft_allocation_var(t_var *var)
 {
-    var->texture = (t_texture *)malloc(sizeof(t_texture) * 4);
-    var->texture->north_texture = (t_textureData *)malloc(sizeof(t_textureData));
-    var->texture->south_texture = (t_textureData *)malloc(sizeof(t_textureData));
-    var->texture->west_texture = (t_textureData *)malloc(sizeof(t_textureData));
-    var->texture->east_texture = (t_textureData *)malloc(sizeof(t_textureData));
+    var->txt = (t_txt *)malloc(sizeof(t_txt) * 4);
+    var->txt->n_txt = (t_txtData *)malloc(sizeof(t_txtData));
+    var->txt->s_txt = (t_txtData *)malloc(sizeof(t_txtData));
+    var->txt->w_txt = (t_txtData *)malloc(sizeof(t_txtData));
+    var->txt->e_txt = (t_txtData *)malloc(sizeof(t_txtData));
     var->player = (t_player *)malloc(sizeof(t_player));
     var->mlx = (t_mlx *)malloc(sizeof(t_mlx));
     var->floor = (t_floorData *)malloc(sizeof(t_floorData));
@@ -41,18 +41,18 @@ void ft_allocation_var(t_var *var)
     var->view = (t_view *)malloc(sizeof(t_view));
     var->mlx->full_img = (t_img *)malloc(sizeof(t_img));
     var->mlx->mini_map = (t_img *)malloc(sizeof(t_img));
-    var->texture->north_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
-    var->texture->south_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
-    var->texture->east_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
-    var->texture->west_texture->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
+    var->txt->n_txt->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
+    var->txt->s_txt->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
+    var->txt->e_txt->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
+    var->txt->w_txt->img = (t_img_txt *)(malloc(sizeof(t_img_txt)));
 }
 
-void ft_init_textures_var(t_var *var)
+void ft_init_txts_var(t_var *var)
 {
-    var->texture->north_texture->only_one = 0;
-    var->texture->south_texture->only_one = 0;
-    var->texture->west_texture->only_one = 0;
-    var->texture->east_texture->only_one = 0;
+    var->txt->n_txt->only_one = 0;
+    var->txt->s_txt->only_one = 0;
+    var->txt->w_txt->only_one = 0;
+    var->txt->e_txt->only_one = 0;
     var->floor->only_f = 0;
     var->ceilling->only_c = 0;
 }
@@ -99,7 +99,7 @@ void ft_init_colors(t_var *var)
 void ft_init(t_var *var)
 {
     ft_allocation_var(var);
-    ft_init_textures_var(var);
+    ft_init_txts_var(var);
     ft_init_raycasting_var(var);
     ft_init_facing_var(var);
     ft_init_colors(var);
@@ -127,33 +127,33 @@ void ft_which_id(t_var *var)
         var->status = 6;
 }
 
-//   ------   The function of storing the Textures data   ------   //
+//   ------   The function of storing the txts data   ------   //
 
-void store_data_texture(t_var *var)
+void store_data_txt(t_var *var)
 {
     if (var->status == 1)
     {
-        var->texture->north_texture->id = mystrdup("NO");
-        var->texture->north_texture->path = mystrdup(var->tmp_map[1]);
-        var->texture->north_texture->only_one += 1;
+        var->txt->n_txt->id = mystrdup("NO");
+        var->txt->n_txt->path = mystrdup(var->tmp_map[1]);
+        var->txt->n_txt->only_one += 1;
     }
     if (var->status == 2)
     {
-        var->texture->south_texture->id = mystrdup("SO");
-        var->texture->south_texture->path = mystrdup(var->tmp_map[1]);
-        var->texture->south_texture->only_one += 1;
+        var->txt->s_txt->id = mystrdup("SO");
+        var->txt->s_txt->path = mystrdup(var->tmp_map[1]);
+        var->txt->s_txt->only_one += 1;
     }
     if (var->status == 3)
     {
-        var->texture->west_texture->id = mystrdup("WE");
-        var->texture->west_texture->path = mystrdup(var->tmp_map[1]);
-        var->texture->west_texture->only_one += 1;
+        var->txt->w_txt->id = mystrdup("WE");
+        var->txt->w_txt->path = mystrdup(var->tmp_map[1]);
+        var->txt->w_txt->only_one += 1;
     }
     if (var->status == 4)
     {
-        var->texture->east_texture->id = mystrdup("EA");
-        var->texture->east_texture->path = mystrdup(var->tmp_map[1]);
-        var->texture->east_texture->only_one += 1;
+        var->txt->e_txt->id = mystrdup("EA");
+        var->txt->e_txt->path = mystrdup(var->tmp_map[1]);
+        var->txt->e_txt->only_one += 1;
     }
 }
 
@@ -242,15 +242,15 @@ void ft_calcul_components(t_var *var)
     var->components = i;
 }
 
-//   ------   The function of checking the syntax of Textures    ------   //
+//   ------   The function of checking the syntax of txts    ------   //
 
-void ft_check_textures(t_var *var)
+void ft_check_txts(t_var *var)
 {
     ft_calcul_components(var);
     if (var->components != 2)
-        ft_msg_error("\033[91mInvalid Syntax textures !\033[91m");
+        ft_msg_error("\033[91mInvalid Syntax txts !\033[91m");
     if (open(var->tmp_map[1], O_RDONLY) == -1)
-        error_map("\033[91mWrong Path or Permessions of textures !\033[91m", var);
+        error_map("\033[91mWrong Path or Permessions of txts !\033[91m", var);
 }
 
 //   ------   The function of checking the syntax of Floor and Ceillig    ------   //
@@ -262,18 +262,18 @@ void ft_check_floor_ceil(t_var *var)
         ft_msg_error("\033[91mInvalid Syntax Floor or Ceilling !\033[91m");
 }
 
-//   ------   The function of checking the double data (textures/Floor/Ceilling Ids)    ------   //
+//   ------   The function of checking the double data (txts/Floor/Ceilling Ids)    ------   //
 
 void ft_check_double_id(t_var *var)
 {
-    if (var->texture->north_texture->only_one > 1)
-        ft_msg_error("\033[91mDouble Texture NO!\033[91m");
-    if (var->texture->south_texture->only_one > 1)
-        ft_msg_error("\033[91mDouble Texture SO !\033[91m");
-    if (var->texture->west_texture->only_one > 1)
-        ft_msg_error("\033[91mDouble Texture WE!\033[91m");
-    if (var->texture->east_texture->only_one > 1)
-        ft_msg_error("\033[91mDouble Texture EA!\033[91m");
+    if (var->txt->n_txt->only_one > 1)
+        ft_msg_error("\033[91mDouble txt NO!\033[91m");
+    if (var->txt->s_txt->only_one > 1)
+        ft_msg_error("\033[91mDouble txt SO !\033[91m");
+    if (var->txt->w_txt->only_one > 1)
+        ft_msg_error("\033[91mDouble txt WE!\033[91m");
+    if (var->txt->e_txt->only_one > 1)
+        ft_msg_error("\033[91mDouble txt EA!\033[91m");
     if (var->floor->only_f > 1)
         ft_msg_error("\033[91mDouble Id F!\033[91m");
     if (var->ceilling->only_c > 1)
@@ -287,16 +287,16 @@ void ft_check_id(t_var *var)
     int i;
     int validId; // to check if the identifier is valide
 
-    var->id_textures = ft_split("NO,SO,WE,EA", ',');
+    var->id_txts = ft_split("NO,SO,WE,EA", ',');
     i = 0;
     validId = 0;
     while (i < 4)
     {
-        if (ft_strcmp(var->tmp_map[0], var->id_textures[i]) == 0)
+        if (ft_strcmp(var->tmp_map[0], var->id_txts[i]) == 0)
         {
-            ft_check_textures(var);  //  check error of textures !!
-            ft_which_id(var);        //   determinate the status : NO || SO || ....
-            store_data_texture(var); //    if everthing is correct store the data
+            ft_check_txts(var);  //  check error of txts !!
+            ft_which_id(var);    //   determinate the status : NO || SO || ....
+            store_data_txt(var); //    if everthing is correct store the data
             validId = 1;
             ft_check_double_id(var);
         }
@@ -304,14 +304,14 @@ void ft_check_id(t_var *var)
     }
     if (ft_strcmp(var->tmp_map[0], "F") == 0 || ft_strcmp(var->tmp_map[0], "C") == 0)
     {
-        ft_check_floor_ceil(var);   //  check error of textures !!
+        ft_check_floor_ceil(var);   //  check error of txts !!
         ft_which_id(var);           //   determinate the status : F  || C || ....
         store_data_floor_ceil(var); //    if everthing is correct store the data  (needs to convert! !)
         validId = 1;
         ft_check_double_id(var);
     }
     if (var->tmp_map[0][0] == '1')
-        ft_msg_error("\033[91mSome informations missed from the file (4 Textures, Floor and Ceilling data should be exist) !\033[91m");
+        ft_msg_error("\033[91mSome informations missed from the file (4 txts, Floor and Ceilling data should be exist) !\033[91m");
     if (validId == 0)
         ft_msg_error("\033[91mInvalid ID !\033[91m");
 }
