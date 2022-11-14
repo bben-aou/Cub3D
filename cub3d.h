@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/13 14:21:13 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,7 @@ void get_intersection_vert(t_var *var);
 //  ================ rendring 3D functions ================//
 int reprint_map(void *var);
 void set_map_size(t_var *var);
-void rendering3D(t_var *var);
+void rendering_3d(t_var *var);
 
 //  ---------------   Bilal Part   ------------- //
 

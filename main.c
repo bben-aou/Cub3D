@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 08:31:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/13 14:17:39 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void draw_all(t_var *var)
 
     var->player->rotatin_angle += var->player->turn_left_right * var->player->rotation_speed;
     mlx_clear_window(var->mlx, var->mlx->win);
-    rendering3D(var);
+    rendering_3d(var);
 }
 
 int reprint_map(void *var)
@@ -52,9 +52,6 @@ int main(int argc, char **argv)
     var.mlx->init = mlx_init();
     set_map_size(&var);
     var.mlx->win = mlx_new_window(var.mlx->init, var.mlx->width, var.mlx->height, "Cub3D");
-    var.mlx->full_img->img = mlx_new_image(var.mlx->init, var.mlx->width, var.mlx->height);
-    var.mlx->full_img->addr = mlx_get_data_addr(var.mlx->full_img->img, &var.mlx->full_img->bpp, &var.mlx->full_img->line_len,
-                                                &var.mlx->full_img->endian);
     set_up_all(&var);
     convert_floor_colors(&var);
     convert_ceilling_colors(&var);

@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:26:49 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/13 11:55:21 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 10:23:35 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void calcul_xoffset(t_var *var)
 
 void get_color_from_texture(t_var *var)
 {
-    int pixel = 0;
+    int pixel;
 
+    pixel = 0;
     if (var->ray->was_hit_vert)
     {
         if (var->view->facing_right)

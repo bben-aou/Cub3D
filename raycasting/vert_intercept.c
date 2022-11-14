@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 18:09:17 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/13 14:11:10 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 09:11:27 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void calcul_first_intercept_v(t_var *var)
     var->ray->x_vert_intercept = floor(var->player->x / TILE_SIZE) * TILE_SIZE;
     if (var->view->facing_right == 1)
         var->ray->x_vert_intercept += TILE_SIZE;
-    var->ray->y_vert_intercept = var->player->y + (var->ray->x_vert_intercept - var->player->x) * tan(var->ray->ray_angle);
+    var->ray->y_vert_intercept = var->player->y + \
+        (var->ray->x_vert_intercept - var->player->x) * tan(var->ray->ray_angle);
 }
 
 bool check_if_wall(t_var *var, int next_x, int next_y)

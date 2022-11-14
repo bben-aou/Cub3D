@@ -6,7 +6,7 @@
 #    By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 11:06:04 by bben-aou          #+#    #+#              #
-#    Updated: 2022/11/13 14:16:17 by iomayr           ###   ########.fr        #
+#    Updated: 2022/11/14 10:01:57 by iomayr           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ src =   main.c \
 	  ./player_moves/playerHookCheck.c \
 	  ./player_moves/playerTools.c \
 	  ./raycasting/compare_distance.c \
-	  ./raycasting/rendering3D.c \
+	  ./raycasting/rendering_3d.c \
 	  ./floor_and_ceilling/convert_colors.c \
 	  ./floor_and_ceilling/drawFloorAndCeilling.c \
 	  ./raycasting/vert_intercept.c \
