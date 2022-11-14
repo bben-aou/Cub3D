@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 15:47:03 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 16:45:35 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ typedef struct s_var
     t_txt *txt;
     t_floorData *floor;
     t_ceillibData *ceilling;
-    t_keyPressed *keyPerssed;
+    t_key_pressed *keyPerssed;
     t_raycasting *ray;
     t_view *view;
     t_colors *clrf;

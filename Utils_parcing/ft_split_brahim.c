@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:10:59 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/14 15:41:43 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 16:41:05 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,9 @@ char	**ft_split_b(char *s, char c)
 		else if ((s[p] == c || p == ft_strlen1(s)) && i >= 0)
 		{
 			ptr[j++] = ft_print(s, i, p);
-			i = -1; 
+			i = -1;
 		}
 	}
 	ptr[j] = 0;
-	free(s);
 	return (ptr);
 }

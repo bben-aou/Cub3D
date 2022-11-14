@@ -6,17 +6,17 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:21:41 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/14 14:12:13 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 16:47:16 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static char	*get_next_line_b(int fd, t_var *var)
+static char *get_next_line_b(int fd, t_var *var)
 {
-	char	str[1000000];
-	char	buff[1];
-	int		i;
+	char str[1000000];
+	char buff[1];
+	int i;
 
 	i = 0;
 	if (fd < 0)
@@ -31,7 +31,7 @@ static char	*get_next_line_b(int fd, t_var *var)
 	return (var->buff);
 }
 
-void	initialize_data(t_var *var)
+void initialize_data(t_var *var)
 {
 	var->map = NULL;
 	var->buff = NULL;
@@ -39,9 +39,9 @@ void	initialize_data(t_var *var)
 	var->save = NULL;
 }
 
-int	check_map_start(char *str)
+int check_map_start(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (!str)
@@ -52,8 +52,7 @@ int	check_map_start(char *str)
 			i++;
 		if (str[i] == '1' || str[i] == '0')
 			return (1);
-		else if (str[i] != '1' && str[i] != '0' && str[i] != ' ' \
-			&& str[i] != '\n')
+		else if (str[i] != '1' && str[i] != '0' && str[i] != ' ' && str[i] != '\n')
 			ft_msg_error("Invalid Map !");
 		else
 			return (0);
@@ -61,10 +60,10 @@ int	check_map_start(char *str)
 	return (0);
 }
 
-void	read_map(t_var *var)
+void read_map(t_var *var)
 {
-	int		i;
-	char	*line_to_join;
+	int i;
+	char *line_to_join;
 
 	i = 0;
 	line_to_join = get_next_line(var->fd);
