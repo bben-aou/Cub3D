@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_brahim.c                                   :+:      :+:    :+:   */
+/*   ft_split_brahim.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:10:59 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/09 17:18:14 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:40:31 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int find(char *s, char c)
+static int	find(char *s, char c)
 {
-	int p;
-	int j;
+	int	p;
+	int	j;
 
 	p = 1;
 	j = 0;
@@ -35,10 +35,10 @@ static int find(char *s, char c)
 	return (p);
 }
 
-static char *ft_print(char *s, size_t start, size_t end)
+static char	*ft_print(char *s, size_t start, size_t end)
 {
-	char *ptr;
-	int i;
+	char	*ptr;
+	int		i;
 
 	i = 0;
 	ptr = malloc((end - start + 1) * (sizeof(char)));
@@ -52,16 +52,16 @@ static char *ft_print(char *s, size_t start, size_t end)
 	return (ptr);
 }
 
-char **ft_split_b(char *s, char c)
+char	**ft_split_b(char *s, char c)
 {
-	char **ptr;
-	int p;
-	int j;
-	int i;
+	char	**ptr;
+	int		p;
+	int		j;
+	int		i;
 
 	i = -1;
-	j = 0;
 	p = -1;
+	j = 0;
 	if (find(s, c) == 0)
 		return (0);
 	ptr = malloc(sizeof(char *) * (find(s, c) + 1));
