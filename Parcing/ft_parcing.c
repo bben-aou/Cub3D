@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:38:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 12:36:28 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 15:48:26 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void ft_allocation_var(t_var *var)
     var->floor->color = (int *)malloc(sizeof(int) * 3);
     var->ceilling = (t_ceillibData *)malloc(sizeof(t_ceillibData));
     var->ceilling->color = (int *)malloc(sizeof(int) * 3);
-    var->keyPerssed = (t_keyPressed *)malloc(sizeof(t_keyPressed));
+    var->keyPerssed = (t_key_pressed *)malloc(sizeof(t_key_pressed));
     var->ray = (t_raycasting *)malloc(sizeof(t_raycasting));
     var->view = (t_view *)malloc(sizeof(t_view));
     var->mlx->full_img = (t_img *)malloc(sizeof(t_img));

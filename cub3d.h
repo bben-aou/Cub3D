@@ -6,7 +6,7 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:45:57 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 12:36:28 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/14 15:47:03 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_player
     double rotation_speed; // means 3deg of retation per each click
 } t_player;
 
-typedef struct s_keyPressed
+typedef struct s_key_pressed
 {
     int key_w;
     int key_s;
@@ -82,7 +82,7 @@ typedef struct s_keyPressed
     int key_turn_left;
     int key_turn_right;
 
-} t_keyPressed;
+} t_key_pressed;
 
 typedef struct s_raycasting
 {
