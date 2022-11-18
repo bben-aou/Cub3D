@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawFloorAndCeilling.c                             :+:      :+:    :+:   */
+/*   utils_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 07:57:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/15 11:31:12 by bben-aou         ###   ########.fr       */
+/*   Created: 2022/11/15 08:41:53 by bben-aou          #+#    #+#             */
+/*   Updated: 2022/11/15 10:27:59 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	create_rgb(int r, int g, int b)
+int	count_comma(char *str)
 {
-	return (r << 16 | g << 8 | b);
-}
+	int	i;
+	int	count;
 
-void	draw_ceil_floor(t_var *var)
-{
-	int	t;
-	int	v;
-
-	t = 0;
-	while (t < var->mlx->height)
+	i = 0;
+	count = 0;
+	while (str[i])
 	{
-		v = 0;
-		while (v < var->mlx->width)
-		{
-			if (t <= var->mlx->height / 2)
-				my_img_pix_put2(var, v, t, var->floor->f_color);
-			else
-				my_img_pix_put2(var, v, t, var->ceilling->c_color);
-			v++;
-		}
-		t++;
+		if (str[i] == ',')
+			count ++;
+		i++;
 	}
+	return (count);
 }

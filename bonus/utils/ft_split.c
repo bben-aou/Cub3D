@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:30:27 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 15:08:11 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:33:13 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static char	**ft_do(char const *s, int rows, char c, char **str)
 	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_bonus(char const *s, char c)
 {
 	char	**str;
 	int		rows;

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   drawFloorAndCeilling.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 07:57:47 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/15 11:31:12 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:11:37 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
-int	create_rgb(int r, int g, int b)
+int	create_rgbb(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
 
-void	draw_ceil_floor(t_var *var)
+void	draw_ceil_floorb(t_varb *var)
 {
 	int	t;
 	int	v;
@@ -29,9 +29,9 @@ void	draw_ceil_floor(t_var *var)
 		while (v < var->mlx->width)
 		{
 			if (t <= var->mlx->height / 2)
-				my_img_pix_put2(var, v, t, var->floor->f_color);
+				my_img_pix_putb(var, v, t, var->floor->f_color);
 			else
-				my_img_pix_put2(var, v, t, var->ceilling->c_color);
+				my_img_pix_putb(var, v, t, var->ceilling->c_color);
 			v++;
 		}
 		t++;

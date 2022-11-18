@@ -6,13 +6,13 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:16:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/15 19:59:02 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/15 20:06:11 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi_b(const char *str)
 {
 	int	i;
 	int	r;
@@ -41,11 +41,11 @@ int	ft_atoi(const char *str)
 	return (r * s);
 }
 
-int	ft_check_extension(char *str)
+int	ft_check_extensionb(char *str)
 {
 	int	len;
 
-	len = ft_strlen1(str);
+	len = ft_strlenb(str);
 	if (str[len - 4] == '.')
 		if (str[len - 3] == 'c')
 			if (str[len - 2] == 'u')
@@ -54,7 +54,7 @@ int	ft_check_extension(char *str)
 	return (0);
 }
 
-int	ft_strlen1(const char *str)
+int	ft_strlenb(const char *str)
 {
 	int	i;
 
@@ -66,7 +66,7 @@ int	ft_strlen1(const char *str)
 	return (i);
 }
 
-void	ft_msg_error(char *msg, t_var *var)
+void	ft_msg_errorb(char *msg, t_varb *var)
 {
 	(void)var;
 	write(2, "Error\n", 6);
@@ -74,7 +74,7 @@ void	ft_msg_error(char *msg, t_var *var)
 	exit(1);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp_bn(char *s1, char *s2)
 {
 	int	i;
 

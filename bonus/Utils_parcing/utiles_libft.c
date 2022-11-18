@@ -6,20 +6,19 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:52:24 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/10 15:09:02 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/15 17:38:24 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
-
-char	*ft_strdupB1(char *str)
+char	*ft_strdup_bonus_b(char *str)
 {
 	int		i;
 	char	*ptr;
 
 	i = 0;
-	ptr = malloc(sizeof(char) * ft_strlen1(str) + 1);
+	ptr = malloc(sizeof(char) * ft_strlenb(str) + 1);
 	if (!ptr)
 		return (NULL);
 	while (str[i])
@@ -31,7 +30,7 @@ char	*ft_strdupB1(char *str)
 	return (ptr);
 }
 
-int	ft_strcmpB1(char *str, char *ptr)
+int	ft_strcmp_bnb(char *str, char *ptr)
 {
 	int	i;
 
@@ -41,9 +40,9 @@ int	ft_strcmpB1(char *str, char *ptr)
 	return (str[i] - ptr[i]);
 }
 
-void	error_mapB1(char *msg, t_varb *var)
+void	error_map_b(char *msg, t_varb *var)
 {
 	var->nothing = 0;
-    printf("Oups Error : %s\n", msg);
-    exit(1);
+	printf("Oups Error : %s\n", msg);
+	exit(1);
 }

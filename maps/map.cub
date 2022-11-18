@@ -7,8 +7,8 @@ SO ./textures/texture2.xpm
 WE ./textures/texture3.xpm
 EA ./textures/texture4.xpm
 
-F 110,61,52
-C 99,52,71
+F 0,128,255
+C 255,222,0
 
 1111111111111111111111111
 1000000000110000000000001

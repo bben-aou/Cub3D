@@ -6,11 +6,26 @@
 /*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 08:30:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/14 14:19:03 by iomayr           ###   ########.fr       */
+/*   Updated: 2022/11/15 20:03:44 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	ft_free_array2d(char **arr)
+{
+	int	i;
+
+	if (arr == NULL)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
 
 char	*ft_strdup(char *src, int j)
 {

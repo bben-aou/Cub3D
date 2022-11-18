@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_multisplit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 08:27:56 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 15:08:07 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:32:23 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	ft_wordcount(char *str, char *charset)
 	return (j);
 }
 
-static char	*ft_strdup1(char *src, int j)
+static char	*ft_strdup_bonus1(char *src, int j)
 {
 	char	*dst;
 	int		i;
@@ -69,7 +69,7 @@ static char	*ft_strdup1(char *src, int j)
 	return (dst);
 }
 
-char	**ft_multisplit(char *str, char *charset)
+char	**ft_multisplitb(char *str, char *charset)
 {
 	char		**dest;
 	int			size;
@@ -86,7 +86,7 @@ char	**ft_multisplit(char *str, char *charset)
 		while (ft_is_charset(*str, charset))
 			str++;
 		j = ft_wordlen(str, charset);
-		dest[i] = ft_strdup1(str, j);
+		dest[i] = ft_strdup_bonus1(str, j);
 		str += j;
 		i++;
 	}

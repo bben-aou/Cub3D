@@ -6,13 +6,13 @@
 /*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 10:45:44 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/15 11:45:41 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/15 17:31:30 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./get_next_line.h"
 
-char	*ft_checkline(char *svar)
+char	*ft_checkline1(char *svar)
 {
 	int		i;
 	char	*ar;
@@ -40,7 +40,7 @@ char	*ft_checkline(char *svar)
 	return (ar);
 }
 
-char	*ft_nextline(char *svar)
+char	*ft_nextline1(char *svar)
 {
 	int		i;
 	int		c;
@@ -54,7 +54,7 @@ char	*ft_nextline(char *svar)
 		free(svar);
 		return (NULL);
 	}
-	temp = (char *)malloc(sizeof(char) * (ft_len(svar) - i + 1));
+	temp = (char *)malloc(sizeof(char) * (ft_lenb(svar) - i + 1));
 	if (!temp)
 		return (NULL);
 	i++;
@@ -66,7 +66,7 @@ char	*ft_nextline(char *svar)
 	return (temp);
 }
 
-char	*ft_fill_line(int fd, char *svar)
+char	*ft_fill_line1(int fd, char *svar)
 {
 	char	*str;
 	int		b;
@@ -75,7 +75,7 @@ char	*ft_fill_line(int fd, char *svar)
 	if (!str)
 		return (NULL);
 	b = 1;
-	while (!ft_strchr(svar, '\n') && b != 0)
+	while (!ft_strchr1(svar, '\n') && b != 0)
 	{
 		b = read(fd, str, BUFFER_SIZE);
 		if (b == -1)
@@ -84,23 +84,23 @@ char	*ft_fill_line(int fd, char *svar)
 			return (NULL);
 		}
 		str[b] = '\0';
-		svar = ft_strjoin(svar, str);
+		svar = ft_strjoin1(svar, str);
 	}
 	free(str);
 	return (svar);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line1(int fd)
 {
 	char		*checkedline;
 	static char	*svar;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	svar = ft_fill_line(fd, svar);
+	svar = ft_fill_line1(fd, svar);
 	if (!svar)
 		return (NULL);
-	checkedline = ft_checkline(svar);
-	svar = ft_nextline(svar);
+	checkedline = ft_checkline1(svar);
+	svar = ft_nextline1(svar);
 	return (checkedline);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_brahim.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:10:59 by iomayr            #+#    #+#             */
-/*   Updated: 2022/11/14 15:53:17 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:33:43 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 
 static int	find(char *s, char c)
 {
@@ -52,7 +52,7 @@ static char	*ft_print(char *s, size_t start, size_t end)
 	return (ptr);
 }
 
-char	**ft_split_b(char *s, char c)
+char	**ft_split_bonus_b(char *s, char c)
 {
 	char	**ptr;
 	int		p;
@@ -67,11 +67,11 @@ char	**ft_split_b(char *s, char c)
 	ptr = malloc(sizeof(char *) * (find(s, c) + 1));
 	if (!ptr)
 		return (0);
-	while (++p <= ft_strlen1(s))
+	while (++p <= ft_strlenb(s))
 	{
 		if (s[p] != c && i < 0)
 			i = p;
-		else if ((s[p] == c || p == ft_strlen1(s)) && i >= 0)
+		else if ((s[p] == c || p == ft_strlenb(s)) && i >= 0)
 		{
 			ptr[j++] = ft_print(s, i, p);
 			i = -1;

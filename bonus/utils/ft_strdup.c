@@ -3,16 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 08:30:53 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/10 15:08:20 by bben-aou         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:08:06 by iomayr           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
-char	*ft_strdup(char *src, int j)
+void	ft_freeb_array2db(char **arr)
+{
+	int	i;
+
+	if (arr == NULL)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
+char	*ft_strdup_bonus(char *src, int j)
 {
 	char	*dst;
 	int		i;
@@ -30,8 +45,7 @@ char	*ft_strdup(char *src, int j)
 	return (dst);
 }
 
-
-char	*mystrdupB(char *src)
+char	*mystrdupb(char *src)
 {
 	char	*new;
 	int		i;
@@ -40,7 +54,8 @@ char	*mystrdupB(char *src)
 	size = 0;
 	while (src[size])
 		++size;
-	if (!(new = malloc(sizeof(char) * (size + 1))))
+	new = malloc(sizeof(char) * (size + 1));
+	if (!(new))
 		return (NULL);
 	i = 0;
 	while (src[i])
