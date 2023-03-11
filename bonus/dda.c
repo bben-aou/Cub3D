@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:18:56 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/15 19:28:40 by iomayr           ###   ########.fr       */
+/*   Updated: 2023/03/11 10:54:15 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	dda_line(t_varb *var)
 	while (i <= var->dda_data.step)
 	{
 		my_img_pix_putb(var, var->dda_data.new_x * 0.2, \
-			var->dda_data.new_y * 0.2, 0xe56025);
+			var->dda_data.new_y * 0.2, 0xF1C40F );
 		var->dda_data.new_x = var->dda_data.new_x + var->dda_data.delta_x;
 		var->dda_data.new_y = var->dda_data.new_y + var->dda_data.delta_y;
 		i++;

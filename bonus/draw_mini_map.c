@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iomayr <iomayr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bben-aou <bben-aou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:25:46 by bben-aou          #+#    #+#             */
-/*   Updated: 2022/11/15 19:27:43 by iomayr           ###   ########.fr       */
+/*   Updated: 2023/03/11 10:55:28 by bben-aou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	draw_cube(t_varb *var, int width, int height, char *color)
 		while (j < (width + T_S))
 		{
 			if (ft_strcmp_bn(color, "wall") == 0)
-				my_img_pix_putb(var, j * 0.2, i * 0.2, 0x466986);
+				my_img_pix_putb(var, j * 0.2, i * 0.2, 0x7B7D7D);
 			else if (ft_strcmp_bn(color, "empty") == 0)
-				my_img_pix_putb(var, j * 0.2, i * 0.2, 0xc9d9cf);
+				my_img_pix_putb(var, j * 0.2, i * 0.2, 0x17202A);
 			j++;
 		}
 		i++;

@@ -2,13 +2,13 @@
 
 
 
-      NO ./textures/texture1.xpm
-SO ./textures/texture2.xpm
-WE ./textures/texture3.xpm
-EA ./textures/texture4.xpm
+      NO ./textures/laboWallGreen.xpm
+SO ./textures/laboWallRed.xpm
+WE ./textures/laboWallGreen.xpm
+EA ./textures/laboWallRed.xpm
 
-F 0,128,255
-C 255,222,0
+F 33,97,140  
+C 44,62,80
 
 1111111111111111111111111
 1000000000110000000000001
